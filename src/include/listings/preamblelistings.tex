@@ -1,0 +1,113 @@
+\usepackage{listings}
+
+\renewcommand{\lstlistlistingname}{Verzeichnis der Programmlistings}
+
+\newcommand{\inlinelst}[1]{{\footnotesize\ttfamily#1}}
+
+\lstset{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=t,
+	columns=fullflexible,
+	frame=single,
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{gray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,
+	tabsize=2,
+	xleftmargin=.04\textwidth,
+	xrightmargin=.02\textwidth
+}
+
+\lstdefinelanguage{XML}{
+	morestring=[b]",
+	moredelim=[s][\bfseries\color{Maroon}]{<}{\ },
+	moredelim=[s][\bfseries\color{Maroon}]{</}{>},
+	moredelim=[l][\bfseries\color{Maroon}]{/>},
+	moredelim=[l][\bfseries\color{Maroon}]{>},
+	morecomment=[s]{<?}{?>},
+	morecomment=[s]{<!--}{-->},
+	commentstyle=\color{green},
+	stringstyle=\color{blue},
+	identifierstyle=\color{red}
+}
+
+% JavaScript
+\lstdefinelanguage{JavaScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch,
+	switch, var, if, in, while, do, else, case, break},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstdefinestyle{CSharp} {
+	language=[Sharp]C,
+	basicstyle=\ttfamily\scriptsize,
+	commentstyle=\color{green},
+	morecomment=[s][\color{green}]{/*+}{*/},
+	morecomment=[s][\color{green}]{/*-}{*/},
+	stringstyle=\color{red},
+	literate={\$}{\textcolor{red}{\$}}{1},
+	keywordstyle=\color{blue},
+	morekeywords={partial, var, value, get, set, abstract, event, new, struct,
+	as, explicit, null, base, extern, object, this, bool, false, operator,
+	break, finally, out, true, byte, fixed, override, try, float, params,
+	typeof, catch, for, private, uint, char, foreach, protected, ulong,
+	checked, goto, public, unchecked, class, readonly, unsafe, const,
+	implicit, ref, ushort, continue, in, using, decimal, int, sbyte, virtual,
+	default, interface, sealed, volatile, delegate, internal, short, void,
+	do, is, sizeof, while, double, lock, stackalloc, long, static,
+	enum, namespace, string, nameof, await, async},
+%-------------------------------------------
+%keywords like if/else, switch/case ...
+	emphstyle=\color{violet},
+	emph={if, else, return, throw, switch, case, Assert},
+%-------------------------------------------
+%Collection of local and global variables
+	emphstyle={[2]\color{teal}},
+	emph={[2]someLocalVariable, someGlobalVariable, Client, _testOutputHelper,
+	CONNECTION_STRING, _authorizedClientFixture, SQL_QUERY, _routes, lfidContext,
+	Logger, Mapper, Configuration, Version_2_1},
+%-------------------------------------------
+%Collection of class types
+	emphstyle={[3]\color{cyan}},
+	emph={[3]SomeOwnClassType, AuthorizedClientFixture, CountriesSqlTest, ApiControllerBase,
+	CountriesWebTestAuthorized, DateTime, HttpClient, ITestOutputHelper, ActionDescriptor,
+	Theory, Repeat, KeyValuePair, HttpContent, HttpResponseMessage, Uri, Task, IHostingEnvironment,
+	SqlConnection, CountriesWebTestUnauthorized, IClassFixture, List, IDisposable, MainWindow,
+	CountryModel, Program, Startup, ApiController, Produces, Route, Authorize, IMapper, JsonConvert,
+	ILogger, LfidContext, IReadOnlyList, Controller, ApiControllerBase, ActionResult,
+	IActionDescriptorCollectionProvider, CountriesController, HttpGet, HttpHead, IApplicationBuilder,
+	IEnumerable, DataNotFoundException, IWebHostBuilder, Config, ApiResource, Secret, JObject,
+	SidStarApproachModel, AirportModel, SidStarApproachEnum, Waypoint, FormUrlEncodedContent},
+%-------------------------------------------
+%Collection of methods
+	emphstyle={[4]\color{brown}},
+	emph={[4]ToLower, GetCountryModels, Dispose, Should_return_all_countries_from_Database,
+	RequestTokenToAuthorizationServer, Close, WriteLine, DeserializeObject, Parse, Main,
+	Should_return_all_countries_with_Authentication, ReadAsStringAsync, SendAsync, Build,
+	Should_return_all_countries, NotEmpty, GetAsync, ExecuteReader, Open, Read, ToString,
+	Run, CreateWebHostBuilder, CreateDefaultBuilder, ConfigureLogging, UseStartup, UseUrls,
+	GetShadowCountries, ToListAsync, OrderBy, ThenBy, GroupBy, Select, FirstOrDefault, Map,
+	AddDebug, AddConsole, GetApiResources, GetClients, Configure, ConfigureServices,
+	AddIdentityServer, AddDeveloperSigningCredential, AddInMemoryApiResources, AddInMemoryClients,
+	AddMvc, SetCompatibilityVersion, isDevelopment, UseDeveloperExceptionPage, useHsts,
+	UseIdentityServer, UseHttpsRedirection, UseMvc, MapRoute, RequestTokenToAuthorizationServer,
+	isSuccessStatusCode, GetWaypointsAsync, GetSortedLegsAsync, GetSidsStarsApproachesAsync,
+	GetAirportsAsync, GetCountriesAsync, Content, Result},
+}

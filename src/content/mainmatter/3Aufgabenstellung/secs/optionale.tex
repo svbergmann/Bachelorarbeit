@@ -1,0 +1,27 @@
+\section{Optionale Anforderungen}\label{sec:optionale-anforderungen}
+	Das \lfidSystem{} stellt Daten bereit,
+	welche von verschiedenen Programmen unterschiedlich interpretiert werden können.
+	Diese Anbindung an die Datenbank erfolgt momentan
+	für jedes einzelne Programm noch über einen direkten Datenbankzugriff
+	und wird zudem aktuell noch nicht direkt im Flugsimulator genutzt.
+	Die Lösung soll sein,
+	alle Programme und Flugsimulatorkomponenten,
+	welche diese Daten benötigen,
+	so umzustellen,
+	dass diese sich bei dem \gls{webservice} \glslink{autorisierung}{autorisieren} müssen,
+	um damit auch Daten abfragen zu können.
+	Bei den Programmen,
+	welche nur Leserechte benötigen,
+	kann dann durch die \gls{autorisierung} ein anderes Zugriffslevel zugewiesen werden,
+	als bei Programmen,
+	welche tatsächlich dazu befugt sind,
+	Daten zu ändern.
+	Hier würde dann natürlich auch direkt mitspielen,
+	dass für jede Entität alle \httpMethoden{} bereitgestellt werden müssen,
+	um alle \crudOperationen{} abbilden zu können.
+
+	Zudem ist der \nameref{subsec:autorisierungsserver} bisher nur ein Kommandozeilenprogramm,
+	wie auch der \gls{webservice},
+	was eventuell auch noch durch eine grafische Oberfläche
+	-- vor allem für die Einrichtung der Rechteverteilung --
+	unterstützt werden könnte.

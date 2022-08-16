@@ -1,0 +1,59 @@
+\section{Internetreferenzmodell}\label{sec:internetreferenzmodell}
+	Um die nächsten Kapitel in den Gesamtzusammenhang einordnen zu können,
+	wird folgend kurz auf die \enquote{Grundlage des Internets} eingegangen.
+
+	Im Allgemeinen existieren zwei Modelle:
+	Einmal das \isoOsi,
+	welches ab 1977 durch die \gls{iso}
+	für die Kommunikation in offenen Netzwerken (\gls{osi})
+	bereitgestellt wurde
+	und eine (etwas einfachere und) neuere Version,
+	das \tcpIp,
+	bei dem der Name vom \gls{tcp} und vom \gls{ip} stammt.
+	Diese sogenannten Schichtenmodelle definieren einen Stapel von Ebenen,
+	welche versuchen,
+	die Aufgaben zu abstrahieren,
+	voneinander abzukoppeln und damit zu vereinfachen.
+	In \vref{fig:schichtenmodell} sind die verschiedenen Lagen der Modelle gegenübergestellt
+	und Beispiele genannt,
+	welche Protokolle in welcher Schicht liegen.
+
+	Fängt man nun an,
+	die Schichten von unten nach oben durchzuzählen,
+	befindet sich auf der ersten Schicht im \isoOsi{} die Bitübertragungsschicht,
+	welche zusammen mit der zweiten Schicht,
+	der Sicherungsschicht,
+	die \enquote{Host-to-Network} Schicht im \tcpIp{} ergibt.
+	Diese Ebene ist dafür verantwortlich,
+	die physikalische Übertragung zu gewährleisten.
+	Beispiele hierfür sind vor allem das Ethernet (Kabel)
+	und das WLAN nach \glslink{ieee}{IEEE} 802.11 Standard,
+	wobei einfache Fehlererkennungsverfahren zusätzlich darin angesiedelt sind.
+
+	Die nächste Schicht beinhaltet das \gls{ip}
+	und ist damit zuständig für die Adressierung und Übertragung der Pakete.
+	Die Reihenfolge der Pakete muss dabei allerdings nicht zwingend eingehalten werden.
+	Zudem ist es möglich,
+	dass Übertragungsfehler entstehen,
+	welche jedoch durch diese Schicht nicht erkannt werden können.
+	Die Internet-, bzw.\ Vermittlungsschicht stellt auch noch das \gls{icmp} bereit,
+	welches den Versand von Kontrollinformationen
+	-- beispielsweise Änderung von Routing, oder Statusabfragen --
+	möglich macht.
+
+	In beiden Modellen folgt darauf die \enquote{Transportschicht}.
+	Diese ist für die Kommunikation zwischen zwei Partnern zuständig und beinhaltet zwei Protokolle.
+	Das \gls{tcp} ist zuverlässig und verbindungsorientiert,
+	weshalb es für kritische und sicherheitsrelevante Übertragungen genutzt wird.
+	Das \gls{udp} ist verbindungslos und unzuverlässig,
+	jedoch dadurch schneller,
+	wodurch es zur Übertragung großer Datenströme --
+	wie beispielsweise Videostreams -- genutzt werden kann,
+	wobei das Fehlen einzelner kleinerer Pakete nicht auffällt.
+
+	Die drei ursprünglichen Schichten (Sitzung, Darstellung und Anwendung) im \isoOsi{}
+	wurden im \tcpIp{} zu einer Schicht,
+	der Verarbeitungsschicht,
+	zusammengefasst.
+	Dieser Bereich dient zur Bereitstellung höherwertiger Protokolle und Anwendungssoftware.
+	Hierzu gehören unter anderem das \gls{ftp}, das \gls{smtp} und auch das \gls{http}.

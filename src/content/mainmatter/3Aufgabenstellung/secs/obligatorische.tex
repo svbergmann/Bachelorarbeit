@@ -1,0 +1,19 @@
+\section{Obligatorische Anforderungen}\label{sec:obligatorische-anforderungen}
+
+	Der \gls{webservice} muss den IT-Richtlinien des
+	\glslink{bsi}{Bundesamts für Sicherheit in der Informationstechnik (BSI)} gerecht werden
+	und somit den Bestimmungen des IT-Grundschutz-Kompendiums\footcite[][]{holgerschildt2022} entsprechen.
+	Es müssen über eine \gls{rest}-Schnittstelle Methoden für den Zugriff
+	auf die dahinter liegende Datenbank bereitgestellt werden.
+	Das Ganze soll schnell und zuverlässig passieren und mehrere Anfragen pro Sekunde verarbeiten können.
+	Wie aus der Beschreibung eines \gls{rest}-\glspl{webservice} hervorgeht,
+	muss die \gls{api} zudem selbst sprechend sein (Stichwort: \gls{hateoas}) und
+	-- soweit möglich --
+	alle \crudOperationen{} widerspiegeln können.
+	Um den \gls{webservice} testen und die Resultate grafisch darzustellen,
+	unter anderem dafür,
+	dass die Einbindung in den Simulator gezeigt wird,
+	muss auch noch eine Benutzeroberfläche existieren,
+	die optimalerweise der eines Cockpits ähnelt.
+	Des Weiteren müssen alle Programme in C\# geschrieben werden
+	und selbstredend auf dem Zielsystem laufen.

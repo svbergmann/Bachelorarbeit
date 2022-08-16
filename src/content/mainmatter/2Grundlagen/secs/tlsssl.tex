@@ -1,0 +1,15 @@
+\section{TLS/SSL}\label{sec:tls/ssl}
+
+	Um die Übertragung der Daten beispielsweise durch das \gls{http} sicher zu gestalten
+	und vor dem Zugriff Dritter zu schützen,
+	wird das \gls{tls}-Protokoll genutzt.
+	Der noch meistens äquivalent verwendete Name \gls{ssl} wurde 1999 offiziell
+	durch die Veröffentlichung von \enquote{The TLS Protocol Version 1.0}\footcite[Vgl.][]{rfc2246}
+	durch die \gls{ietf} in \gls{tls} umbenannt.
+	Diese Version gilt allerdings mittlerweile als ungültig und sollte daher nicht mehr genutzt werden.
+	Aktuell werden die Versionen 1.2\footcite[Vgl.][]{rfc5246} und 1.3\footcite[Vgl.][]{rfc8446} genutzt.
+	Im Kern werden für die Absicherung zwei interne Protokolle genutzt,
+	welche im Folgenden erläutert werden.
+
+	\input{content/mainmatter/2Grundlagen/secs/subsecs/tlshandshake.tex}
+	\input{content/mainmatter/2Grundlagen/secs/subsecs/tlsrecord.tex}

@@ -1,0 +1,31 @@
+\pgfplotstableread{include/tikzDiagrams/time.dat}{\table}
+
+\begin{tikzpicture}
+
+    \begin{axis}[
+        xmin = 1, xmax = 10,
+        ymin = 0, ymax = 80,
+        grid = both,
+        minor tick num = 1,
+        major grid style = {lightgray},
+        minor grid style = {lightgray!25},
+        width = \textwidth,
+        legend cell align = {left},
+        legend pos = north east,
+        xlabel = {Nummer der Anfrage},
+        ylabel = {Zeit in Millisekunden}
+    ]
+        \addplot[blue, smooth, ultra thick] table [x ={x}, y = {y1}] {\table};
+
+        \addplot[red, smooth, ultra thick] table [x ={x}, y = {y2}] {\table};
+
+        \addplot[green, smooth, ultra thick] table [x = {x}, y = {y3}] {\table};
+
+        \legend{
+            Direkte~\gls{sql}-Abfrage,
+            \glslink{autorisierung}{Autorisierte}~\gls{api}-Anfrage,
+            \glslink{autorisierung}{Unautorisierte}~\gls{api}-Anfrage
+        }
+
+    \end{axis}
+\end{tikzpicture}

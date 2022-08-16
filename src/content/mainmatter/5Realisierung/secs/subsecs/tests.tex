@@ -1,0 +1,32 @@
+\subsection{Tests}\label{subsec:tests}
+	Die hier aufgeführten Tests existieren vor allem,
+	um die Unterschiede der Request-Zeiten,
+	wie in \vref{fig:timeOfRequests} dokumentiert,
+	zu zeigen.
+	Die Klasse \inlinelst{Authorized\-Client\-Fixture} zeigt dabei,
+	wie sich ein Client mit dem \gls{webservice} \glslink{autorisierung}{autorisieren} und verbinden kann.
+	Zeile 7--11 in \vref{lst:authorizedClientFixture} setzt die nötigen Informationen
+	für den \glslink{authentifizierung}{Authentifizierungsprozess},
+	wie die \gls{url} des \hyperref[sec:authorization-server]{Authorisierungsservers},
+	die \inlinelst{clientId},
+	den \inlinelst{scope} und das \inlinelst{clientSecret}.
+	Diese Parameter werden dann für die Funktion \inlinelst{Request\-Token\-To\-Authorization\-Server} genutzt,
+	welche das \hyperref[par:access-token]{Access Token} beantragt
+	und bei Erfolg zurückgibt.
+	Für die Beantragung werden \gls{http}-Header Felder genutzt.
+	Nach der Rückkehr aus dieser Methode wird das \hyperref[par:access-token]{Access Token} aus dem \gls{json}-Format geparst
+	und an den Clienten weitergegeben,
+	welcher nun ein Header-Feld namens \enquote{Bearer} mit dem \hyperref[par:access-token]{Access Token} als Wert setzen kann.
+	Dieser Client wird dann genutzt,
+	um \glslink{autorisierung}{autorisierte} Anfragen an den \nameref{sec:webservice} zu schicken.
+	In dem in \vref{lst:countriesWebTestAuthorized} gezeigten Fall werden alle vorhandenen Länder angefragt.
+	Der Request an sich findet in der Methode \inlinelst{GetCountryModels} in Zeile 28--36 statt,
+	wobei mit einem asynchronen Aufruf der gegebenen \gls{uri} die Ressource angefragt wird.
+	Diese Liste der Länder wird dann deserialisiert
+	und als \inlinelst{List} Objekt zurückgegeben.
+	Die gleiche Methode findet sich in \vref{lst:countriesWebTestUnauthorized} wieder,
+	mit der einzigen Unterscheidung,
+	dass dieser Client nicht \glslink{autorisierung}{autorisiert} ist.
+	Der letzte Test (s. \vref{lst:countriesSQLTest}) zeigt,
+	wie sich ein Programm direkt mit der Datenbank verbinden kann
+	und Daten über eine \gls{sql}-Anfrage erhält.

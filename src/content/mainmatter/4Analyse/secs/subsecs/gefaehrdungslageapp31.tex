@@ -1,0 +1,32 @@
+\subsubsection{Gefährdungslage}\label{subsubsec:gefaehrdungslage-app.3.1}
+	Die Gefährdungslage dieses Bausteins ist noch einmal unterteilt.
+	Im Folgenden werden relevante Gefährdungen angesprochen\footcite[Vgl.][APP.3.2 S. 1]{holgerschildt2022}.
+
+	\myparagraph[APP.3.1.2.1]{Unzureichende Protokollierung von sicherheitsrelevanten Ereignissen}
+	Die Protokollierung sicherheitsrelevanter Ereignisse ist erforderlich,
+	um später die Ursachen eines bestimmten Ereignisses ermitteln
+	und somit Schwachstellen, kritische Fehler,
+	oder unerlaubte Änderungen nachvollziehen zu können.
+
+	\myparagraph[APP.3.1.2.2]{Offenlegung sicherheitsrelevanter Informationen bei Webanwendungen und Webservices}
+	Bei der Auslieferung von \glspl{webservice} ist darauf zu achten,
+	keine sicherheitsrelevanten Daten offenzulegen,
+	sprich Informationen über genutzte Programme,
+	Systeme oder Versionen weiterzugeben.
+
+	\myparagraph[APP.3.1.2.3]{Missbrauch einer Webanwendung durch automatisierte Nutzung}
+	Ein \gls{webservice} kann durch automatisierte Anfragen missbraucht werden
+	und somit eventuell Nutzerdaten preisgeben.
+	Dadurch könnten Angreifer gültige Benutzernamen sammeln
+	und sich dann damit durch mehrfaches Probieren
+	von Passwörtern Zugriff zur Anwendung verschaffen.
+
+	\myparagraph[APP.3.1.2.4]{Unzureichende Authentisierung}
+	Meistens werden Rollenprofile angelegt,
+	um Benutzern die Möglichkeit zu geben,
+	bestimmte Ressourcen erreichen zu können,
+	welche von anderen Profilen nicht erreicht werden können.
+	Falls die \glslink{authentisierung}{Authentisierung} der Nutzer unzureichend ist,
+	könnte ein Angreifer einfachen Zugriff erlangen
+	und im schlimmsten Fall sogar auf die Nutzerdaten zugreifen,
+	falls diese ebenfalls über diese Rolle erreichbar sind.

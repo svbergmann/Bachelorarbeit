@@ -1,0 +1,46 @@
+\begin{sequencediagram}
+
+	\newthread{client}{:Client}
+	\newinst[1]{oauth}{:\nameref{subsec:autorisierungsserver}}
+	\newinst[1]{webservice}{:\nameref{subsec:webservice}}
+	\newinst[1]{lfid}{:\lfidSystem}
+
+	\begin{sdblock}{\nameref{subsec:oauth-2.0}}{}
+		\begin{call}
+		{client}
+		{\shortstack{\gls{jwt}\\beantragen}}
+		{oauth}
+		{\shortstack{\gls{jwt}\\schicken}}
+			\postlevel
+		\end{call}
+	\end{sdblock}
+
+	\begin{sdblock}{\gls{http} Anfrage}{}
+		\begin{call}
+		{client}
+		{\shortstack{Daten\\zusammen mit\\\gls{jwt} beantragen}}
+		{webservice}
+		{Daten zurückschicken}
+			\begin{sdblock}{\nameref{subsec:oauth-2.0}}{}
+				\begin{call}
+				{webservice}
+				{\gls{jwt} validieren}
+				{oauth}
+				{Rechte bestätigen}
+					\postlevel
+				\end{call}
+			\end{sdblock}
+			\begin{sdblock}{\gls{sql}}{}
+				\begin{call}
+				{webservice}
+				{\shortstack{\gls{sql}-Anfrage\\abschicken}}
+				{lfid}
+				{\shortstack{Angefragte Daten\\zurückschicken}}
+					\postlevel
+				\end{call}
+			\end{sdblock}
+			\postlevel
+		\end{call}
+	\end{sdblock}
+
+\end{sequencediagram}

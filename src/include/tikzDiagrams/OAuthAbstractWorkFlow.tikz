@@ -1,0 +1,65 @@
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,241); %set diagram left start at 0, and has height of 241
+
+%Shape: Rectangle [id:dp9112141025931051]
+	\draw   (10,10) -- (70,10) -- (70,210) -- (10,210) -- cycle ;
+%Shape: Rectangle [id:dp2466907608570026]
+	\draw   (248.46,10) -- (360,10) -- (360,70) -- (248.46,70) -- cycle ;
+%Shape: Rectangle [id:dp667913005920042]
+	\draw   (248.46,81) -- (360,81) -- (360,141) -- (248.46,141) -- cycle ;
+%Shape: Rectangle [id:dp38178981445269944]
+	\draw   (248.46,151) -- (360,151) -- (360,211) -- (248.46,211) -- cycle ;
+%Straight Lines [id:da8122455913426612]
+	\draw    (70,30) -- (246.46,30) ;
+	\draw [shift={(248.46,30)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da5648885701594799]
+	\draw    (70,101) -- (246.46,101) ;
+	\draw [shift={(248.46,101)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da09731573656651382]
+	\draw    (70,171) -- (246.46,171) ;
+	\draw [shift={(248.46,171)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da4634800234879517]
+	\draw    (248.46,201) -- (72,201) ;
+	\draw [shift={(70,201)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da41475583524040527]
+	\draw    (248.46,131) -- (72,131) ;
+	\draw [shift={(70,131)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da5062439224159696]
+	\draw    (248.46,60) -- (72,60) ;
+	\draw [shift={(70,60)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+	\draw (21,102) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\footnotesize Client}};
+% Text Node
+	\draw (261,22) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\footnotesize Resource}\\{\footnotesize Owner}};
+% Text Node
+	\draw (261,92) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\footnotesize Authorization}\\{\footnotesize Server}};
+% Text Node
+	\draw (261,162) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\footnotesize Resource}\\{\footnotesize Server}};
+% Text Node
+	\draw (111,12) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Authorization Request}};
+% Text Node
+	\draw (111,42) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Authorization Grant}};
+% Text Node
+	\draw (111,82) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Authorization Grant}};
+% Text Node
+	\draw (111,112) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Access Token}};
+% Text Node
+	\draw (111,152) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Access Token}};
+% Text Node
+	\draw (111,182) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Protected Resource}};
+% Text Node
+	\draw (81,12) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {(A)};
+% Text Node
+	\draw (81,42) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {(B)};
+% Text Node
+	\draw (81,82) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {(C)};
+% Text Node
+	\draw (81,112) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {(D)};
+% Text Node
+	\draw (81,152) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {(E)};
+% Text Node
+	\draw (82,182) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {(F)};
+
+
+\end{tikzpicture}

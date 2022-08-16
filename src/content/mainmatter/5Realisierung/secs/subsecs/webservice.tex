@@ -1,0 +1,109 @@
+\subsection{Webservice}\label{subsec:webservice}
+
+	Das eigentliche Programm nutzt in \vref{lst:webServiceProgram} fast
+	den gleichen Code wie der \nameref{subsec:autorisierungsserver},
+	da beide Programme einen \gls{webservice} darstellen.
+	Einzig der Port auf den dieser \gls{webservice} hört unterscheidet sich (s. Zeile 15),
+	um beide gleichzeitig nutzen zu können.
+	Ansonsten wird hier ebenfalls \gls{constructorInjection} genutzt
+	und dadurch die Klasse \inlinelst{Startup} erstellt,
+	welche sich in den Methoden \inlinelst{Configure\-Services} und \inlinelst{Configure} unterscheidet.
+	Zur besseren Übersichtlichkeit wird daher \inlinelst{Configure\-Services}
+	in \vref{lst:webServiceConfigureServices}
+	und \inlinelst{Configure} in \vref{lst:webServiceConfigure} dargestellt.
+	Beide Methoden konfigurieren den zu erstellenden \gls{webservice}
+	und werden intern beim Programmstart aufgerufen.
+
+	\subsubsection{ConfigureServices}\label{subsubsec:configureservices}
+		In Zeile 7 wird ein \gls{singleton} einer \inlinelst{Auto\-Mapper} Klasse angelegt
+		und den Services hinzugefügt,
+		welches später dafür sorgen wird,
+		dass die Objekte aus der Datenbank zu sogenannten \enquote{shallow Objects} zugeordnet werden.
+		Das ist sinnvoll,
+		da nicht alle Attribute aus der Datenbank zwingend in diesen Objekten präsentiert werden müssen.
+		Zeile 13 fügt ebenfalls \glspl{singleton} hinzu,
+		die sich um die \gls{autorisierung} und die \gls{api}-Verwaltung,
+		sprich, wo welche Methoden stehen, kümmern.
+		Die Zeilen 15--34 bearbeiten weiter die \gls{autorisierung} und
+		verlinken unter anderem die Zugangsberechtigungen
+		und den \nameref{subsec:autorisierungsserver} mit diesem \gls{webservice}.
+		Dafür werden noch Attribute definiert,
+		die als Optionen zu den \httpMethoden{} zugeordnet werden können,
+		um die Berechtigungen einzuschränken.
+		Für die einfachere Entwicklung und grafische Ansicht der nutzbaren \httpMethoden{} wird
+		Swagger\footcite[S.][]{smartbear_2022} genutzt und in den folgenden Zeilen eingerichtet.
+		Ein weiterer Vorteil hiervon ist,
+		dass durch Swagger automatisch eine XML-Datei erstellt wird,
+		welche in der \gls{openApiSpec} 3.0\footcite[S.][]{miller_whitlock_gardiner_ralphson_ratovsky_sarid_2017} formatiert ist.
+		Zuletzt wird noch die \gls{sql}-Datenbank über einen \inlinelst{DbContext} hinzugefügt und angesprochen,
+		indem die Verbindungszeichenfolge aus einer Konfigurationsdatei ausgelesen wird.
+
+	\subsubsection{Configure}\label{subsubsec:configure}
+		Hier wird neben anderen Konfigurationen ein selbst geschriebener ExceptionHandler der Applikation hinzugefügt,
+		welcher angesprochen wird,
+		falls bei der Ausführung irgendeiner \httpMethode{} eine Ausnahme geworfen wird.
+		In dem internen \inlinelst{switch-\-case} Konstrukt wird zwischen einer
+		\inlinelst{Argument\-Out\-Of\-Range\-Exception},
+		einer \inlinelst{Data\-Not\-Found\-Exception}\footnote{S. \vref{lst:webServiceDataNotFoundException}}
+		und allen anderen Exceptions unterschieden.
+		Es werden jeweils die Fehlermeldungen in \gls{json} umgewandelt
+		und zusammen mit einem entsprechenden \httpStatusCode{} zurückgegeben.
+		Die letzten Zeilen setzen dann nur noch einige Attribute des Programms.
+
+	\subsubsection{ApiControllerBase}\label{subsubsec:apicontrollerbase}
+		Dies ist die Elternklasse,
+		welche von allen anderen Controller-Klassen implementiert wird
+		und einige nützliche Attribute bereitstellt.
+		Die Annotationen über dem Klassennamen von Zeile 2--6 werden ebenfalls weitervererbt.
+		Über \inlinelst{[ApiController]} wird die Klasse als Controller gekennzeichnet
+		und kann nun \httpMethoden{} implementieren,
+		welche alle über \inlinelst{[Produces(\enquote{application/json})]} eine in \gls{json} formatierte Datei zurückgeben.
+		Um diese Methoden danach aufrufen zu können,
+		wird mit \inlinelst{[Route(\enquote{api/controller})]} festgelegt,
+		dass die Adresse mit \inlinelst{api/<Name des Controllers>/} beginnt.
+		Die \gls{autorisierung} wird in den Zeilen 5--6 gesteuert,
+		indem Schemata und Policy gesetzt werden,
+		welche allerdings noch für einzelne Methoden überschrieben werden können.
+		Diese Klasse arbeitet ebenfalls mit \gls{constructorInjection} und bekommt daher einige Objekte,
+		die dafür genutzt werden,
+		die Klassenattribute zu setzen um damit weiterarbeiten zu können.
+		Der übergebene \inlinelst{IAction\-Descriptor\-Collection\-Provider} enthält eine
+		zuvor generierte Liste aller verfügbaren Methoden und Links.
+		Wie schon zuvor angesprochen,
+		ist es sinnvoll,
+		nicht alle Attribute des Datenbankobjektes preiszugeben,
+		wofür das Objekt des Typen \inlinelst{IMapper} zuständig ist.
+		Des Weiteren kann jeder Controller mit dem \inlinelst{lfid\-Context}
+		Daten aus der Datenbank abfragen und der \inlinelst{logger}
+		ist natürlich zur Protokollierung da.
+
+	\subsubsection{Controller}\label{subsubsec:controller}
+		In \vref{lst:countriesController} ist beispielhaft ein Controller dargestellt,
+		welcher \nameref{subsubsec:apicontrollerbase} implementiert.
+		Es wird hier dargestellt,
+		wie eine \hyperref[itm:httpget]{GET}
+		und eine \hyperref[itm:httphead]{HEAD} Route
+		erstellt werden kann und wie die Datenbankabfrage funktioniert.
+
+		Im Konstruktor passiert nichts,
+		außer dass der Super-Konstruktor wieder durch \gls{constructorInjection} aufgerufen wird.
+		Die eigentliche Arbeit passiert in der Methode \inlinelst{Get\-Shadow\-Countries},
+		wobei diese durch die Annotationen in Zeile 7 und 8 eine \hyperref[itm:httpget]{GET}
+		und eine \hyperref[itm:httphead]{HEAD} Methode darstellt.
+		Intern wird hier über das \inlinelst{LfidContext} Objekt eine Menge aller Länder abgefragt.
+		Falls das resultierende Objekt leer ist,
+		wird eine \inlinelst{Data\-Not\-Found\-Exception}\footnote{S. \vref{lst:webServiceDataNotFoundException}} geworfen
+		und ansonsten wird damit weitergearbeitet.
+		Die Zeilen 12--15 stellen eine \gls{linq} Abfrage dar,
+		welche die zurückgegebene Menge zuerst nach
+		\enquote{CustareaCode}\footnote{Der CustareaCode stellt einen im \gls{arinc}-Format spezifizierten Code für die korrespondierende Region dar.}
+		und dann nach
+		\enquote{IcaoCode}\footnote{Der \gls{icao}-Code dient zur eindeutigen Identifizierung von Flugplätzen. Da die ersten zwei Buchstaben das Land beschreiben, werden diese hier auch in der Tabelle der Länder geführt.}
+		sortiert.
+		Die Elemente werden dann über den \enquote{IcaoCode} gruppiert
+		und schließlich in ein \inlinelst{Country\-Model} gemappt.
+		Mit dem Aufruf von \inlinelst{return Ok(...)} wird die resultierende Menge
+		als formatiertes \gls{json}-Objekt zurückgegeben.
+		Das Rückgabeobjekt ist eine \inlinelst{Task} von \inlinelst{Action\-Result} von \inlinelst{IEnumerable}
+		von \inlinelst{Country\-Model},
+		um unter anderem die Methode asynchron gestalten zu können.

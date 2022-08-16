@@ -1,0 +1,137 @@
+%! suppress = EscapeAmpersand
+
+
+\chapter{Tabellen}\label{ch:tabellen}
+
+	%! suppress = NonBreakingSpace
+	\begin{xltabular}{\textwidth}{|l|l|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|@{}Y@{}|}
+		\caption[Kreuzreferenztabelle APP.3.1]
+		{Kreuzreferenztabelle zu elementaren Gefährdungen APP.3.1\\
+		Quelle:~\fullcite{holgerschildt2022}}
+		\label{tab:kreuzreferenztabelleApp31}
+		\\
+		\hline
+		\nameref{subsec:app.3.1-webanwendungen-und-webservices}  & CIA & G 0.14 & G 0.15 & G 0.18 & G 0.19 & G 0.23 & G 0.28 & G 0.30 & G 0.31 & G 0.43 & G 0.46
+		\\\hline\hline
+		\endfirsthead
+		\nameref{subpar:APP.3.1.A1}  &     &        &        & X      &        &        &        & X      & X      &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A4}  &     &        &        &        & X      & X      &        & X      &        & X      &
+		\\\hline
+		\nameref{subpar:APP.3.1.A7}  &     &        &        &        &        & X      &        & X      & X      &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A8}  &     &        &        & X      &        &        &        &        &        &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A9}  &     &        &        & X      &        &        & X      &        &        &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A11} &     &        & X      &        & X      & X      &        &        &        & X      & X
+		\\\hline
+		\nameref{subpar:APP.3.1.A12} &     &        &        &        &        & X      &        & X      & X      &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A14} &     &        &        &        & X      &        &        &        &        &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A20} & CIA &        &        &        &        & X      &        &        &        &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A21} &     & X      &        &        &        & X      &        &        &        &        &
+		\\\hline
+		\nameref{subpar:APP.3.1.A22} &     &        &        & X      &        &        & X      &        &        &        &
+		\\\hline
+	\end{xltabular}
+
+	\newpage
+
+	\begin{xltabular}{\textwidth}{@{}|p{0.23\textwidth}|X|X|@{}}
+		\caption[\nameref{subsubsec:netcore21} vs. \nameref{subsubsec:netframework}]
+		{\nameref{subsubsec:netcore21} vs. \nameref{subsubsec:netframework}\\
+		Quelle: \fullcite[Vgl.][]{srivastava_2022}}
+		\label{tab:netcorevsnetframework}
+		\\
+		\hline
+		& \nameref{subsubsec:netcore21} & \nameref{subsubsec:netframework}
+		\\\hline\hline
+		\endfirsthead
+		Open Source & Ja & Nur manche Komponenten
+		\\\hline
+		Cross-Platform & Ja, läuft auf Windows, Linux und MacOS & Nein, läuft nur auf Windows
+		\\\hline
+		Application Models
+		& Unterstützt keine Entwicklung von Desktopanwendungen, fokussiert sich mehr auf die Entwicklung von Webanwendungen
+		& Wird für die Entwicklung von Desktopanwendungen genutzt, kann aber auch für Webanwendungen genutzt werden
+		\\\hline
+		Installation
+		& Alle Abhängigkeiten werden in das auszuliefernde Paket gepackt, damit es plattformübergreifend genutzt werden kann
+		& Hier wird nur das Projektspezifische Paket gepackt, alle anderen werden durch die Installation im Betriebssystem nachgeliefert
+		\\\hline
+		Unterstützung von Micro-Services und \gls{rest}-Services
+		& Ja, unterstützt beides
+		& Unterstützt nur die Implementierung von \gls{rest}-Services
+		\\\hline
+		Leistung und Skalierbarkeit
+		& Leistungsfähiger und skalierbarer
+		& Nicht so effektiv im Vergleich zu \nameref{subsubsec:netcore21}
+		\\\hline
+	\end{xltabular}
+
+	\newpage
+
+	%! suppress = NonBreakingSpace
+	\begin{xltabular}{\textwidth}{@{}|p{0.19\textwidth}|X|X|@{}}
+		\caption{IT Sicherheitsanforderungstabelle}
+		\label{tab:itSicherheitsanforderungstabelle}
+		\\
+		\hline
+		\nameref{sec:owasp}
+		& \nameref{sec:it-grundschutz-kompendium}
+		& \hyperref[sec:sicherheitsaspekte]{Realisierung}
+		\\\hline\hline
+		\endfirsthead
+		\nameref{par:A01:2021}
+		& \nameref{subpar:APP.3.1.A1},
+		 \nameref{subpar:APP.3.1.A7},
+		 \nameref{subpar:APP.3.1.A14},
+		 \nameref{subpar:APP.3.1.A8},
+		 \nameref{subpar:APP.3.1.A9}
+		& Einrichtung verschiedener Profile mit unterschiedlichen Rechten und Freigaben
+		\\\hline
+		\nameref{par:A02:2021}
+		& \nameref{subpar:APP.3.1.A8},
+		 \nameref{subpar:APP.3.1.A9},
+		 \nameref{subpar:APP.3.1.A11}
+		& Nutzung von~\nameref{sec:tls/ssl} und einer~\gls{authentifizierung}
+		\\\hline
+		\nameref{par:A03:2021}
+		& \nameref{subpar:APP.3.1.A14},
+		 \nameref{subpar:APP.3.1.A9},
+		 \nameref{subpar:APP.3.1.A11}
+		& Benutzen eines~\glspl{framework} zur Gestaltung des~\glspl{webservice},
+		zusammen mit~\gls{linq} zur Abfrage der Korrektheit der übergebenen Parameter
+		\\\hline
+		\nameref{par:A04:2021},
+		 \nameref{par:A06:2021},
+		 \nameref{par:A08:2021}
+		& \nameref{subpar:APP.3.1.A8},
+		 \nameref{subpar:APP.3.1.A9}
+		& Externe Pakete nur aus vertrauenswürdigen Quellen,
+		wie bspw.\ Microsoft und aktuellste Versionen bzw.\ Sicherheitspatches
+		\\\hline
+		\nameref{par:A05:2021},
+		 \nameref{par:A07:2021}
+		& \nameref{subpar:APP.3.1.A1},
+		 \nameref{subpar:APP.3.1.A7},
+		 \nameref{subpar:APP.3.1.A14},
+		 \nameref{subpar:APP.3.1.A9},
+		 \nameref{subpar:APP.3.1.A12}
+		& Deaktivieren von Standardpasswörtern und -benutzerkennungen,
+		Methoden nur für \glslink{autorisierung}{autorisierte} Nutzer erreichbar,
+		ablaufende~\hyperref[par:access-token]{Access Tokens}
+		\\\hline
+		\nameref{par:A09:2021}
+		& \nameref{subpar:APP.3.1.A1},
+		 \nameref{subpar:APP.3.1.A7}
+		& Anmeldeversuche loggen, Methodenaufrufe loggen, Logs in einer von außen nicht zugänglichen Datei abspeichern
+		\\\hline
+		\nameref{par:A10:2021}
+		& \nameref{subpar:APP.3.1.A12}
+		&
+		\\\hline
+	\end{xltabular}

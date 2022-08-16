@@ -1,0 +1,27 @@
+\chapter{Ergebnis und Schlussfolgerungen}\label{ch:ergebnis-und-schlussfolgerungen}
+
+	Die Gestaltung der \gls{authentifizierung} war
+	-- wie im \nameref{subsec:autorisierungsserver} zu sehen --
+	erfolgreich und realisierbar,
+	sowie auch die Bereitstellung einiger Methoden zur Abfrage der Daten.
+	Grundlegend konnten also die \hyperref[sec:obligatorische-anforderungen]{obligatorischen Anforderungen} erfüllt werden.
+	Das Demoprogramm fragt im Hintergrund genau die Daten strukturiert ab,
+	welche von einem echten \gls{fms} benötigt werden.
+	Die Benutzeroberfläche ist dabei eher zweitrangig geblieben,
+	da verschiedene \glspl{fms} mit unterschiedlichen Anzeigen existieren.
+	Wichtig hierbei ist nur,
+	dass die angefragten Daten kaskadenartig präsentiert werden.
+
+	Laut dem \nameref{fig:timeOfRequests} braucht die webbasierte Anfrage
+	mit einer \gls{autorisierung} ca. $5ms\pm2ms$.
+	Damit unterscheidet sich die Dauer kaum zur \glslink{autorisierung}{unautorisierten} Anfrage,
+	woraus schlussgefolgert werden kann,
+	dass sich eine \gls{autorisierung} nicht negativ auf die Antwortzeiten auswirkt.
+	Offensichtlich ist die direkte \gls{sql}-Abfrage vor allem nach der ersten Anfrage viel schneller,
+	allerdings ist genau dies nicht gewünscht.
+	Bis auf den \gls{webservice} soll kein anderes Programm
+	direkte \gls{sql}-Statements an die Datenbank absetzen dürfen.
+	Wenn also nur noch der \gls{webservice} direkten Zugriff auf die Datenbank hat,
+	wird das ganze System durch die Einheitlichkeit
+	und der eliminierten Fehlerquelle von mehreren gleichzeitigen Anfragen stabiler
+	und auch schneller.

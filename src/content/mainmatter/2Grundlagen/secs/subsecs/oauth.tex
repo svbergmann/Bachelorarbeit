@@ -1,0 +1,168 @@
+\subsection{OAuth 2.0}\label{subsec:oauth-2.0}
+	Um einen offenen Standard für die \gls{api}-Zugriffsdelegation zu erstellen,
+	wurde im November 2006 eine Initiative gestartet,
+	welche zum Ziel haben sollte,
+	das OAuth-Protokoll in der Version 1.0 zu entwickeln.
+	Ein offener Standard war gewünscht,
+	da verschiedene Firmen (z. B. Twitter) bereits eigene Verfahren entwickelt hatten
+	und das Beste aus diesen Verfahren zusammengetragen werden sollte,
+	um die Implementierung dieser Delegation zu vereinfachen.
+	Die Delegation der \gls{authentifizierung} gewinnt zunehmend an Notwendigkeit
+	durch immer mehr verschiedene \glspl{webservice} und \webApplications,
+	welche ansonsten alle eine eigene Nutzerverwaltung bräuchten.
+	OAuth schafft hierbei Abhilfe,
+	indem nur gewisse Rechte an die zu nutzende Applikation übertragen werden.
+	Die Version OAuth 1.0 wurde also vier Jahre später durch die \gls{ietf} standardisiert\footcite[Vgl.][]{rfc5849}.
+	Da diese Version allerdings schwierig zu implementieren war und
+	manche Implementierungen sogar Sicherheitslücken aufwiesen,
+	wurde im Oktober 2012 die Version 2.0 veröffentlicht\footcite[Vgl.][]{rfc6749}.
+	Diese hatte zudem einige andere Vorteile und hat Version 1.0 fast komplett abgelöst,
+	da unter anderem auch keine Kompatibilität gegeben ist.
+	Im Folgenden wird daher nur auf OAuth 2.0 eingegangen.
+
+	\subsubsection{Rollen}\label{subsubsec:rollen}
+		OAuth 2.0 definiert vier verschiedene Rollen,
+		welche unter anderem die klassische Client-Server-\gls{authentifizierung} in der Art revolutioniert,
+		dass der Client nun in zwei Rollen aufgeteilt wird.
+
+		\myparagraph[resource-owner]{Resource Owner}
+		Falls es sich um eine Person handelt wird diese Rolle auch \enquote{end-user} genannt.
+		Diese stellt eine Entität dar,
+		welche die Fähigkeit hat,
+		einem Dritten Zugriff auf ihre geschützten Ressourcen zu gewährleisten.
+
+		\myparagraph[resource-server]{Resource Server}
+		Der Resource Server stellt (geschützte) Daten bereit
+		und hostet diese.
+		Zusätzlich dazu ist dieser ebenfalls in der Lage,
+		\accessToken{} zu akzeptieren oder zu verweigern.
+
+		\myparagraph[client]{Client}
+		Der Term \client{} erfordert keine besonderen Charakteristiken
+		und beschreibt eine (Web)\-Applikation,
+		welche Ressourcen beim \hyperref[par:resource-server]{Resource Server} in Vertretung
+		des \enquote{end-users} anfragen kann.
+
+		\myparagraph[authorization-server]{Authorization Server}
+		Um \nameref{subsubsec:token} für die \gls{autorisierung} beim \hyperref[par:resource-server]{Resource Server} zu bekommen,
+		wird der \hyperref[par:authorization-server]{\authorizationServer} genutzt.
+		Dieser kann \nameref{subsubsec:token} erstellen, verschicken und validieren.
+
+	\subsubsection{Token}\label{subsubsec:token}
+		Die Sicherheit im Zugriff auf geschützte Ressourcen
+		kann bei \nameref{subsec:oauth-2.0} durch \enquote{Token} gewährleistet werden.
+		Am häufigsten kommen sogenannte \enquote{Bearer-Token} zum Einsatz.
+
+		\myparagraph[access-token]{Access Token}
+		Diese Token werden genutzt,
+		um Zugangsdaten eines \hyperref[par:resource-owner]{Resource Owners},
+		spezifische Bereiche und die Dauer des Zugriffs
+		für einen \clienten{} verschlüsselt bereitzustellen.
+		Die Darstellung erfolgt als String
+		und ist üblicherweise undurchsichtig für den \clienten.
+		Zudem können sie je nach Sicherheitsrichtlinien des Servers in der Darstellung und Verschlüsselung variieren.
+
+		\myparagraph[refresh-token]{Refresh Token}
+		Refresh Token sind optional und -- wie der Name sagt -- dafür da,
+		die bereits ausgestellte Berechtigung zu erneuern.
+		Der \client{} nutzt dieses Token nur im Austausch
+		mit dem \hyperref[par:authorization-server]{\authorizationServer},
+		um ein neues \accessToken{} zu erhalten.
+		Hiermit kann die Sicherheit dieses Protokolls zusätzlich verstärkt werden,
+		falls die Lebensdauer des \accessTokens{} kurz gewählt wird und
+		der \client{} für Anfragen häufig über das \refreshToken{} ein neues \accessToken{} beantragen muss.
+
+		\vspace{1em}
+
+		\begin{figure}[h]
+			\centering
+			\pgfplotsset{width=.8\textwidth}
+			\input{include/tikzDiagrams/OAuthAbstractWorkFlow.tikz}
+			\caption[OAuth 2.0 Abstrakter Protokoll Fluss]
+			{OAuth 2.0 Abstrakter Protokoll Fluss\label{fig:oauthAbstractFlow}\\Quelle: \fullcite{rfc6749}}
+		\end{figure}
+
+	\subsubsection{Abstrakter Protokollfluss}\label{subsubsec:abstrakter-protokollfluss}
+		\vref{fig:oauthAbstractFlow} zeigt den allgemeinen abstrakten Ablauf
+		einer \gls{autorisierung} mit OAuth 2.0 und ist wie folgt dargestellt:
+
+		\begin{compactenum}[(A)]
+			\item Der \hyperref[par:client]{Client} beantragt die \gls{autorisierung}
+			des \hyperref[par:resource-owner]{Resource Owners}.
+			Diese Anfrage kann entweder direkt an den \hyperref[par:resource-owner]{Resource Owner} gestellt werden
+			oder besser indirekt durch den \hyperref[par:authorization-server]{\authorizationServer} als Vermittler.
+
+			\item Der \hyperref[par:resource-owner]{Resource Owner} antwortet mit einer
+			\glslink{autorisierung}{Autorisierungsgenehmigung},
+			welche eine aus vier zugelassenen Typen sein kann,
+			die jeweils abhängig von den unterstützten Typen
+			des \hyperref[par:authorization-server]{\authorizationServers} sind.
+
+			\item Der \client{} fordert ein \accessToken{}
+			in Kombination mit der vorher erhaltenen \glslink{autorisierung}{Autorisierungsgenehmigung}
+			beim \hyperref[par:authorization-server]{\authorizationServer} an.
+
+			\item Der \hyperref[par:authorization-server]{\authorizationServer} \glslink{authentisierung}{authentisiert}
+			den \clienten,
+			validiert die \glslink{autorisierung}{Autorisierungsgenehmigung} und
+			gibt ein \accessToken{} heraus.
+
+			\item Der \client{} fragt die Ressource beim \hyperref[par:resource-server]{\resourceServer} an
+			und \glslink{authentifizierung}{authentifiziert} sich mit dem \accessToken.
+
+			\item Der \hyperref[par:resource-server]{\resourceServer} prüft das \nameref{subsubsec:token}
+			im Zusammenspiel mit dem \hyperref[par:authorization-server]{\authorizationServer} und
+			erteilt Zugriff auf die angefragte Ressource.
+
+		\end{compactenum}
+
+		\vspace{1em}
+
+		\begin{figure}[h]
+			\centering
+			\pgfplotsset{width=.8\textwidth}
+			\input{include/tikzDiagrams/OAuthRefreshToken.tikz}
+			\caption[OAuth 2.0 Refreshing an Expired Access Token]
+			{OAuth 2.0 Refreshing an Expired Access Token\label{fig:oauthrefreshToken}\\Quelle: \fullcite{rfc6749}}
+		\end{figure}
+
+	\subsubsection{Beantragung eines Refresh Tokens}\label{subsubsec:beantragung-eines-refresh-tokens}
+		Um das vorher genannte \accessToken{} neu beantragen zu können,
+		da meistens eine Gültigkeitsdauer gesetzt ist,
+		wird -- wie in \vref{fig:oauthrefreshToken} gezeigt --
+		zusammen mit dem \refreshToken{} ein neues \accessToken{} beantragt.
+		Der Ablauf ist wie folgt:
+
+		\begin{compactenum}[(A)]
+			\item Wie bei der ersten Beantragung eines \accessTokens{}
+			schickt der \client{} eine \glslink{autorisierung}{Autorisierungsanfrage}
+			an den \hyperref[par:authorization-server]{\authorizationServer}.
+
+			\item Der \hyperref[par:authorization-server]{\authorizationServer} antwortet daraufhin
+			sowohl mit einem \accessToken{} als auch mit einem \refreshToken.
+
+			\item Der \client{} beantragt die geschützten Daten beim \hyperref[par:resource-server]{\resourceServer}
+			in Kombination mit dem \accessToken.
+
+			\item Falls das \accessToken{} valide ist,
+			wird der Request mit den angefragten Daten beantwortet.
+
+			\item Die Schritte (C) und (D) werden so lange wiederholt,
+			bis die Lebensdauer des \accessTokens{} ausgelaufen ist.
+			Wenn der \client{} dies weiß,
+			wird direkt zum Schritt (G) gesprungen,
+			andernfalls wird ein erneuter Request abgesetzt.
+
+			\item Da das \accessToken{} nun ungültig ist,
+			wird vom \hyperref[par:resource-server]{\resourceServer} ein \enquote{Invalid Token Error} zurückgegeben.
+
+			\item Der \client{} beantragt ein neues \accessToken{}
+			beim \hyperref[par:authorization-server]{\authorizationServer},
+			indem dieser das \refreshToken{} zeigt und sich \glslink{autorisierung}{autorisiert}.
+
+			\item Wenn die Validierung des \refreshTokens{} geklappt hat,
+			erteilt der \hyperref[par:authorization-server]{\authorizationServer} dem \clienten{}
+			ein neues \accessToken,
+			sowie optional auch ein neues \refreshToken.
+
+		\end{compactenum}

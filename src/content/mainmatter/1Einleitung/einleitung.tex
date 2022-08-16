@@ -1,0 +1,60 @@
+\chapter{Einleitung}\label{ch:einleitung}
+
+	Ein Flugsimulator besteht aus verschiedenen Simulationskomponenten,
+	von denen viele mit speziell aufbereiteten Daten versorgt werden müssen.
+	Hervorzuheben sind dabei beispielsweise Simulationen von Kommunikations- und Navigationsgeräten
+	und \glslink{fms}{Flight Management Systemen (FMS)}.
+	Diese Komponenten müssen mit passenden Daten versorgt werden.
+	Die Logistik dafür übernimmt dabei das \gls{lfid}-System,
+	welches Kommunikations- und Navigationsdaten in einer Datenbank verwaltet.
+	Diese wird zentral beim \gls{ZSimNav} gepflegt
+	und kann von angeschlossenen Simulatoren genutzt werden.
+	Am Simulator selbst werden diese Daten noch in speziellen Formaten genutzt,
+	welche allerdings nicht mehr mit der größeren Datenmenge zurecht kommen
+	und deshalb obsolet sind.
+	Die Idee ist es daher,
+	einen Navigations- und Kommunikationsdatenservice im Simulator bereitzustellen,
+	sodass unterschiedliche Simulatorkomponenten ihre benötigten Daten von dort beziehen.
+	Dieser Service soll webbasiert sein,
+	sich an der \gls{rest}-Architektur orientieren
+	und den Ansprüchen der Bundeswehr in Bezug auf IT-Sicherheit gerecht werden.
+	Hierbei spielt auch die \gls{authentifizierung} eine große Rolle
+	sowie die nutzbaren Transportprotokolle.
+
+	Das Kapitel \nameref{ch:grundlagen} stellt eine etwas allgemeiner
+	gehaltene Beschreibung und Erklärung wichtiger Begriffe dar.
+	So wird zuerst auf das Internetreferenzmodell eingegangen,
+	woraufhin das \gls{http} und damit einhergehend danach die \gls{tls} folgt.
+	Schließlich werden noch zwei Absicherungsverfahren vorgestellt.
+
+	Die \nameref{ch:aufgabenstellung} behandelt obligatorische und optionale Anforderungen,
+	welche anfangs an die Arbeit bzw.\ an das Produkt gestellt wurden.
+
+	Es folgt die in vier Abschnitte unterteilte \nameref{ch:analyse} der Problemstellung.
+	Die Datenhaltung behandelt grundsätzlich,
+	wie und wo die Daten verfügbar gemacht werden.
+	Das Zielsystem wird vor allem für die kompatiblen \glspl{framework} analysiert.
+	Um die Sicherheit der Übertragung gewährleisten zu können,
+	wird noch das IT Grundschutz Kompendium\footcite[Vgl.][]{holgerschildt2022} näher behandelt,
+	woraufhin auch die Top 10 des \glslink{owasp}{Open Web Application Security Projects (OWASP)} folgen.
+
+	Die \nameref{ch:realisierung} beinhaltet Erklärungen darüber,
+	wie die \glspl{webservice} implementiert wurden
+	und was zur Umsetzung der notwendigen Sicherheitsanforderungen verwendet wurde.
+
+	In \nameref{ch:ergebnis-und-schlussfolgerungen} werden alle Resultate dieser Arbeit aufgezählt
+	und Schlussfolgerungen über die weiteren Vorgehensweisen in Bezug darauf angerissen.
+
+	Das schließende Kapitel \nameref{ch:zusammenfassung-und-ausblick} fasst alles Vorhergehende noch einmal zusammen
+	und stellt einen Ausblick dar.
+
+	Das Ziel dieser Arbeit wird es sein, einen \gls{rest}-basierten \gls{webservice} zu konzipieren,
+	welcher sowohl den Anforderungen der Bundesregierung bezüglich IT-Sicherheit gerecht wird,
+	als auch den Anforderungen des Zielsystems (Simulator),
+	in dem dieser betrieben werden soll.
+	Zudem werden die \gls{owasp} Top 10 angesprochen, analysiert und beachtet.
+	Die Leser dieser Arbeit sollten danach in der Lage sein,
+	eine Entscheidung zu treffen,
+	welches Absicherungsverfahren bei unterschiedlichen Szenarien genutzt werden kann
+	sowie (in Ansätzen) verstehen,
+	wie ein \gls{webservice} gestaltet werden sollte und in \nameref{subsubsec:netcore21} implementiert werden könnte.

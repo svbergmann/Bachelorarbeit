@@ -1,0 +1,37 @@
+\subsection{Autorisierungsserver}\label{subsec:autorisierungsserver}
+
+	Der Autorisierungsserver stellt das Herzstück der
+	implementierten \nameref{subsec:oauth-2.0} \gls{autorisierung} dar.
+	Wie in \vref{lst:authorizationServerProgram} zu sehen,
+	wird hier ein neuer \gls{webservice} erstellt,
+	welcher auf den Port 5003 (s. Zeile 15) hört und das \gls{https} nutzt.
+	In Zeile 14 wird festgelegt,
+	dass die Klasse \inlinelst{Startup} genutzt werden soll,
+	welche in \vref{lst:authorizationServerStartup} dargestellt ist.
+	Diese wird dann per \gls{constructorInjection} erstellt
+	und bekommt ein Objekt vom Typen \inlinelst{IConfiguration}.
+	Die eigentlich wichtige Methode für den Autorisierungsserver ist \inlinelst{ConfigureServices}.
+	Diese bekommt eine Kollektion vom Typen \inlinelst{IServiceCollection} übergeben
+	und fügt dieser über einige Methodenaufrufe Funktionen und Eigenschaften hinzu,
+	sodass eine \gls{autorisierung} stattfinden kann.
+	In Zeile 12 und 13 werden die vordefinierten Bereiche
+	und die daraus resultierenden Clienten
+	über die Methoden \inlinelst{Config.GetApiResources}
+	und \inlinelst{Config.GetClients} hinzugefügt.
+	In \vref{lst:authorizationServerConfig} sind eben diese Methoden vorhanden.
+	Zeile 5 und 6 zeigen, dass zwei \enquote{scopes} erstellt werden,
+	einer nur mit Leserechten, der andere mit vollen Rechten.
+	Diese werden dann wiederum in der Methode \inlinelst{GetClients} genutzt,
+	in welcher zwei Clienten erstellt werden.
+	Der erste Client (Zeile 12--20) kann hier wieder nur lesen
+	und bekommt daher auch genau diesen \enquote{scope} zugewiesen,
+	während der andere (Zeile 21--29) wieder alles darf.
+	Des Weiteren existiert in \inlinelst{Startup} noch die Methode \inlinelst{Configure},
+	welche vor allem dafür zuständig ist,
+	dieses Programm als Identitätsserver darzustellen
+	und \gls{https} zu nutzen.
+	Zusätzlich wird noch entschieden,
+	ob entwicklerspezifische Fehlercodes angezeigt werden sollen oder nicht,
+	was davon abhängt,
+	ob der Aufruf des Programms im \enquote{Debug}
+	oder \enquote{Release} Modus stattfindet.

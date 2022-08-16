@@ -1,0 +1,79 @@
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,501); %set diagram left start at 0, and has height of 501
+
+%Shape: Rectangle [id:dp14661524820943694] 
+	\draw   (30,80) -- (150,80) -- (150,120) -- (30,120) -- cycle ;
+%Shape: Rectangle [id:dp23125445775015252] 
+	\draw   (30,140) -- (150,140) -- (150,180) -- (30,180) -- cycle ;
+%Shape: Rectangle [id:dp6073056454848718] 
+	\draw   (30,200) -- (150,200) -- (150,240) -- (30,240) -- cycle ;
+%Shape: Rectangle [id:dp23082948060985675] 
+	\draw   (30,260) -- (150,260) -- (150,300) -- (30,300) -- cycle ;
+%Shape: Rectangle [id:dp9194855176265426] 
+	\draw   (30,320) -- (150,320) -- (150,360) -- (30,360) -- cycle ;
+%Shape: Rectangle [id:dp15002411511254277] 
+	\draw   (30,380) -- (150,380) -- (150,420) -- (30,420) -- cycle ;
+%Shape: Rectangle [id:dp7659278004980776] 
+	\draw   (30,440) -- (150,440) -- (150,480) -- (30,480) -- cycle ;
+%Shape: Rectangle [id:dp9384630671201377] 
+	\draw   (190,80) -- (310,80) -- (310,240) -- (190,240) -- cycle ;
+%Shape: Rectangle [id:dp2886585382725697] 
+	\draw   (190,260) -- (310,260) -- (310,300) -- (190,300) -- cycle ;
+%Shape: Rectangle [id:dp21363285213042427] 
+	\draw   (190,320) -- (310,320) -- (310,360) -- (190,360) -- cycle ;
+%Shape: Rectangle [id:dp8925292617835479] 
+	\draw   (190,380) -- (310,380) -- (310,480) -- (190,480) -- cycle ;
+%Shape: Rectangle [id:dp3368203067527751] 
+	\draw   (20,20) -- (160,20) -- (160,490) -- (20,490) -- cycle ;
+%Shape: Rectangle [id:dp15663893324336597] 
+	\draw   (180,20) -- (320,20) -- (320,490) -- (180,490) -- cycle ;
+%Shape: Rectangle [id:dp8662901688968356] 
+	\draw   (350,80) -- (470,80) -- (470,240) -- (350,240) -- cycle ;
+%Shape: Rectangle [id:dp3591838539345735] 
+	\draw   (350,260) -- (470,260) -- (470,300) -- (350,300) -- cycle ;
+%Shape: Rectangle [id:dp5202028765817157] 
+	\draw   (350,320) -- (470,320) -- (470,360) -- (350,360) -- cycle ;
+%Shape: Rectangle [id:dp2946006756790316] 
+	\draw   (350,380) -- (470,380) -- (470,480) -- (350,480) -- cycle ;
+%Shape: Rectangle [id:dp48123403892662564] 
+	\draw   (340,20) -- (480,20) -- (480,490) -- (340,490) -- cycle ;
+
+% Text Node
+	\draw (41,92) node [anchor=north west][inner sep=0.75pt]   [align=left] {Anwendung};
+% Text Node
+	\draw (41,152) node [anchor=north west][inner sep=0.75pt]   [align=left] {Darstellung};
+% Text Node
+	\draw (41,212) node [anchor=north west][inner sep=0.75pt]   [align=left] {Sitzung};
+% Text Node
+	\draw (41,272) node [anchor=north west][inner sep=0.75pt]   [align=left] {Transport};
+% Text Node
+	\draw (41,332) node [anchor=north west][inner sep=0.75pt]   [align=left] {Vermittlung};
+% Text Node
+	\draw (41,392) node [anchor=north west][inner sep=0.75pt]   [align=left] {Sicherung};
+% Text Node
+	\draw (39,452) node [anchor=north west][inner sep=0.75pt]   [align=left] {Bitübertragung};
+% Text Node
+	\draw (201,272) node [anchor=north west][inner sep=0.75pt]   [align=left] {Transport};
+% Text Node
+	\draw (202.49,332) node [anchor=north west][inner sep=0.75pt]   [align=left] {Internet};
+% Text Node
+	\draw (199,421) node [anchor=north west][inner sep=0.75pt]   [align=left] {Host-to-\\Network};
+% Text Node
+	\draw (201,151) node [anchor=north west][inner sep=0.75pt]   [align=left] {Anwendung};
+% Text Node
+	\draw (32,30) node [anchor=north west][inner sep=0.75pt]   [align=left] {ISO/OSI - \\Referenzmodell};
+% Text Node
+	\draw (192,30) node [anchor=north west][inner sep=0.75pt]   [align=left] {\gls{tcp}/\gls{ip} - \\Referenzmodell};
+% Text Node
+	\draw (361,272) node [anchor=north west][inner sep=0.75pt]   [align=left] {\gls{tcp}, \ldots};
+% Text Node
+	\draw (362.49,332) node [anchor=north west][inner sep=0.75pt]   [align=left] {\gls{ip}, \ldots};
+% Text Node
+	\draw (361,392) node [anchor=north west][inner sep=0.75pt]   [align=left] {Ethernet, \\WLAN,\\\ldots};
+% Text Node
+	\draw (361,92) node [anchor=north west][inner sep=0.75pt]   [align=left] {\\\glslink{ftp}{FTP},\\\glslink{http}{HTTP},\\\glslink{smtp}{SMTP},\\\glslink{https}{HTTPS}, \\\ldots};
+% Text Node
+	\draw (352,30) node [anchor=north west][inner sep=0.75pt]   [align=left] {Protokollbeispiele};
+
+
+\end{tikzpicture}

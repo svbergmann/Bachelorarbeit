@@ -1,0 +1,50 @@
+\chapter{Zusammenfassung und Ausblick}\label{ch:zusammenfassung-und-ausblick}
+
+	Vor allem zur Bereitstellung neuer Daten und Formate des \lfidSystems{} sollte ein \gls{webservice} so gestaltet
+	und konzipiert werden,
+	dass dieser sicher mit den Clienten kommunizieren kann
+	und sowohl zuverlässig als auch schnell läuft.
+	Hierfür wurde die Grundlage der webbasierten Kommunikation mit dem \nameref{sec:http} geschaffen,
+	welches mit \nameref{sec:tls/ssl} chiffriert Daten verschicken kann.
+	Allerdings reicht das noch nicht für eine sichere Kommunikation,
+	wofür danach \nameref{subsec:oauth-2.0} vorgestellt wurde.
+	Dieses Protokoll wird daher zur \gls{autorisierung} der Clienten beim \gls{webservice} genutzt,
+	indem die \gls{authentifizierung} auf einen weiteren \gls{webservice} ausgelagert wird.
+	Um das alles implementieren zu können wurde danach das Zielsystem analysiert,
+	insbesondere welche Sprachen für die Implementierung sinnvoll und realisierbar sind.
+	Die Entscheidung fiel auf C\# und \nameref{subsubsec:netcore21} für den \gls{webservice}
+	und auf \nameref{subsubsec:netframework} für das Demoprogramm.
+	Für die korrekte Gestaltung dieser Anwendung wurde danach das \nameref{sec:it-grundschutz-kompendium} angesprochen,
+	wobei aufgrund der schieren Größe dieses Dokuments
+	nur auf den Baustein \nameref{subsec:app.3.1-webanwendungen-und-webservices} eingegangen wurde.
+	Dieser wurde dann aufgespalten und für jeden Unterpunkt analysiert.
+	Wie auch in \nameref{subsubsec:weiterfuhrende-informationen-app.3.1-webanwendungen-und-webservices} beschrieben,
+	folgten die Top 10 Bedrohungen des \hyperref[sec:owasp]{\gls{owasp}},
+	welche eine etwas allgemeinere Definition der Sicherheitsrisiken im Internet darstellen,
+	aber trotzdem gut im Zusammenspiel mit dem \nameref{sec:it-grundschutz-kompendium} funktionieren.
+	Dies sieht man auch in der \nameref{tab:itSicherheitsanforderungstabelle},
+	da dort jeder Bedrohung eine oder mehrere Anforderungen hinzugefügt worden sind.
+	Die Beschreibung des Quellcodes befindet sich im Kapitel \nameref{ch:realisierung},
+	wobei unter anderem viel auf die genutzten Attribute des \nameref{subsubsec:netcore21}-\glspl{framework} eingegangen wurde.
+
+	Um an diese Arbeit anzuknüpfen und den \gls{webservice} breiter nutzbar zu machen,
+	könnte man
+	-- wie auch schon in den \hyperref[sec:optionale-anforderungen]{optionalen Anforderungen} beschrieben --
+	auf jeden Fall zu allen Datenbankentitäten Routen erstellen.
+	Diese sollten alle \gls{crud}-Operationen widerspiegeln
+	und auch derart abgesichert sein,
+	dass es einen Unterschied zwischen nur lesenden und bearbeitenden Clienten gibt.
+	Weiterhin sollte eine Benutzeroberfläche für den \nameref{subsec:autorisierungsserver} implementiert werden,
+	welche den Administrator der Anwendungen dazu befähigt,
+	Rollen und Gruppen zu erstellen
+	und somit auch Rechte an Clienten zu verteilen.
+	Eine Webseite für den \gls{webservice} sollte auch existieren,
+	sodass der Administrator gewisse Einstellungen bei dem Programm vornehmen kann.
+	Dazu zählen zum Beispiel ein Datenbank Backup speichern und laden,
+	neue Daten in die Datenbank einspielen
+	und Logging Dateien auslesen können.
+	Vor allem aber soll der Verwalter des Systems das Datenbank Passwort setzen können
+	und somit die Verbindung zur Datenbank herstellen.
+	Zudem muss einer der nächsten Schritte sein,
+	die Programme auf die neuste Version von .NET (aktuell .NET 6.0) umzustellen
+	um dadurch Sicherheitslücken und bekannte Fehler beheben zu können.

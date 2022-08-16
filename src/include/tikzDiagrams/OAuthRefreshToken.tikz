@@ -1,0 +1,59 @@
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,408); %set diagram left start at 0, and has height of 408
+
+%Shape: Rectangle [id:dp13364236400121876]
+	\draw   (10,10) -- (80,10) -- (80,340) -- (10,340) -- cycle ;
+%Shape: Rectangle [id:dp8790780704634384]
+	\draw   (390,10) -- (490,10) -- (490,340) -- (390,340) -- cycle ;
+%Shape: Rectangle [id:dp4236723129691826]
+	\draw   (280,100) -- (370,100) -- (370,260) -- (280,260) -- cycle ;
+%Straight Lines [id:da25292034726719925]
+	\draw    (80,50) -- (388,50) ;
+	\draw [shift={(390,50)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da8910220128583559]
+	\draw    (390,90) -- (82,90) ;
+	\draw [shift={(80,90)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da8301570060257315]
+	\draw    (80,130) -- (278,130) ;
+	\draw [shift={(280,130)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da33179095828439187]
+	\draw    (280,170) -- (82,170) ;
+	\draw [shift={(80,170)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da04499082975726765]
+	\draw    (80,210) -- (278,210) ;
+	\draw [shift={(280,210)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da7604152906927255]
+	\draw    (280,250) -- (82,250) ;
+	\draw [shift={(80,250)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da8975431920651942]
+	\draw    (80,291) -- (388,290.01) ;
+	\draw [shift={(390,290)}, rotate = 179.82] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da4986555462596063]
+	\draw    (390,330) -- (82,330) ;
+	\draw [shift={(80,330)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+	\draw (29,29) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Client}};
+% Text Node
+	\draw (401.02,29) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Authorization}\\{\footnotesize Server}};
+% Text Node
+	\draw (119,19) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (A) Authorization Grant}};
+% Text Node
+	\draw (119,59) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (B) Access \& Refresh Token}};
+% Text Node
+	\draw (120,99) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (C) Access Token}};
+% Text Node
+	\draw (119,139) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (D) Protected Resource}};
+% Text Node
+	\draw (121,179) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (E) Access Token}};
+% Text Node
+	\draw (120,219) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (F) Invalid Token Error}};
+% Text Node
+	\draw (299,119) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize Resource}\\{\footnotesize Server}};
+% Text Node
+	\draw (119,259) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (G) Refresh Token}};
+% Text Node
+	\draw (119,299) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {{\footnotesize (H) Access \& Optional Refresh Token}};
+
+
+\end{tikzpicture}

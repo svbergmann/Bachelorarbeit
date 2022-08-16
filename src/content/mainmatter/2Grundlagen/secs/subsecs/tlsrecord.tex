@@ -1,0 +1,13 @@
+\subsection{TLS Record Protocol}\label{subsec:tls-record-protocol}
+	Das Record Protokoll wird für die eigentliche Datenübertragung genutzt
+	und ist vollständig abgekoppelt vom \nameref{subsec:tls-handshake-protocol}.
+	Zuerst werden die zu verschickenden Daten in handliche Blöcke aufgeteilt,
+	welche optional auch komprimiert werden können.
+	Jeder Nachricht wird dann ein Nachrichtenauthentifizierungscode (engl.\ \gls{mac}) zugewiesen,
+	der zur Integritätsprüfung genutzt wird.
+	Final werden noch genau diese Daten
+	mit dem im \nameref{subsec:tls-handshake-protocol} ausgehandelten Schlüssel
+	chiffriert.
+	Sind die Daten nun vollständig verschlüsselt und verschickt,
+	wird die empfangende Seite das Protokoll noch einmal rückwärts durchlaufen,
+	um die Daten wieder darstellen zu können.

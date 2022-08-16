@@ -1,0 +1,167 @@
+\usepackage{iftex}
+
+\ifluatex
+\usepackage{fontspec}
+\else
+\ifpdftex
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\pdfminorversion=7
+\fi
+\fi
+
+\usepackage[ngerman]{babel}
+
+% Für KOMA-Script
+\usepackage{scrhack}
+
+% Farben
+\usepackage[x11names]{xcolor}
+\definecolor{midblue}{rgb}{0,0,.7}
+\definecolor{midred}{rgb}{.7,0,0}
+\definecolor{midgreen}{rgb}{0,.7,0}
+
+% Andere wichtige Pakete
+\usepackage{pdfpages}
+\usepackage{csquotes}
+\usepackage{xltabular}
+\usepackage{array}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{diagbox}
+\usepackage[labelfont=bf,textfont=sl, skip=15pt]{caption}
+\usepackage{amsmath}
+\usepackage{varioref}
+\usepackage{geometry}
+
+% Zeilenabstand zwischen Aufzählungen verringern
+\usepackage{paralist}
+
+% Bilder
+\usepackage{graphicx}
+\graphicspath{{include/img}}
+
+% Tikz Graphiken
+\usepackage{pgfplots}
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+\usetikzlibrary{calc}
+\tikzset{every picture/.style={line width=0.75pt},
+	pics/entity/.style n args={3}{code={%
+		\node[draw,
+			rectangle split,
+			rectangle split parts=2,
+			text height=1.5ex,
+		] (#1)
+		{#2 \nodepart{second}
+			\begin{tabular}{>{\raggedright\arraybackslash}p{8.5em}}
+				#3
+			\end{tabular}
+		};%
+	}},
+	pics/entitynoatt/.style n args={2}{code={%
+		\node[draw,
+			text height=1.5ex,
+		] (#1)
+		{#2};%
+	}}} %set default line width to 0.75pt
+\usepackage{tikzpagenodes}
+\pgfplotsset{compat = newest}
+\usepackage{pgf-umlsd}
+\usepgflibrary{arrows}
+
+% Einrückung verhindern
+\setlength{\parindent}{0em}
+
+% Listings
+\input{include/listings/preamblelistings.tex}
+
+% Kopf- und Fusszeile
+\usepackage[
+	headsepline,
+	footsepline,
+	autooneside=false,
+	automark
+]{scrlayer-scrpage}
+
+% Zeilenabstand
+\usepackage[onehalfspacing]{setspace}
+
+% Abstand zwischen Kopfzeile und Kapitelüberschrift
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-0.75\baselineskip}}
+
+% Um die Platzhalter zu leeren
+\clearpairofpagestyles
+
+% head definieren
+\automark[section]{chapter}
+
+\ihead{\leftmark} % Kopfzeile innen
+\chead{} % Kopfzeile mitte
+\ohead{\Ifstr{\leftmark}{\rightbotmark}{}{\rightbotmark}} % Kopfzeile aussen
+\ifoot{\myAuthor, CAE GmbH Stolberg} % Fußzeile innen
+\cfoot{} % Fußzeile mitte
+\ofoot{\thepage} % Fußzeile aussen mit Seitenzahl
+
+% Kapitelnummerierung in der Kopfzeile aus
+\renewcommand*{\sectionmarkformat}{}
+
+% Paragrafüberschriften
+\newcommand{\myparagraph}[2][XXX]{\paragraph[#1]{#2}\label{par:#1}\mbox{}\\}
+\newcommand{\mysubparagraph}[2][XXX]{\subparagraph[#1]{#2}\label{subpar:#1}\mbox{}\\}
+
+% BibLaTeX
+\usepackage[
+	backend=biber,
+	maxbibnames=99,
+	style=verbose-ibid
+]{biblatex}
+\addbibresource{include/Bachelorarbeit.bib}
+
+% Zeilenabstand im Literatureintrag zurücksetzen
+\AtBeginBibliography{\singlespacing}
+% Zeilenabstand zwischen den einzelnen Einträgen im Literaturverzeichnis setzen
+\setlength{\bibitemsep}{1.5\itemsep}
+
+\usepackage[
+	pdftitle={\myTitle},
+	pdfauthor={\myAuthor},
+	pdfsubject={\myThesistype},
+	colorlinks=true,
+	linkcolor=midblue,
+	citecolor=midgreen,
+	urlcolor=midred
+]{hyperref}
+\usepackage[noabbrev]{cleveref}
+
+\usepackage{bookmark}
+
+% Glossary
+\usepackage[acronym,toc,nopostdot]{glossaries}
+\makenoidxglossaries % use TeX to sort
+
+% #1 - reference e.g. api
+% #2 - Short e.g. API
+% #3 - Full name e.g. Application Programming Interface
+% #4 - Description
+\newcommand{\newdefineabbreviation}[4]
+{
+% Glossary entry
+	\newglossaryentry{#1_glossary}
+	{text={#2},
+		long={#3},
+		name={\glsentrylong{#1_glossary} (\glsentrytext{#1_glossary})},
+		description={#4}
+	}
+
+% Acronym
+	\newglossaryentry{#1}
+	{type=\acronymtype,
+		name={\glsentrytext{#1_glossary}}, % Short
+		description={\glsentrylong{#1_glossary}}, % Full name
+		first={\glsentryname{#1_glossary}\glsadd{#1_glossary}},
+		see=[Glossar:]{#1_glossary} % Reference to corresponding glossary entry
+	}
+}
+\loadglsentries{include/glossary}

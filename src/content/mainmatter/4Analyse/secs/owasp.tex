@@ -1,0 +1,171 @@
+\section{OWASP Top 10}\label{sec:owasp}
+	Das \gls{owasp} ist eine öffentliche Gemeinschaft,
+	welche in dreijährigen Abständen Top-10 Listen\footcite[Vgl.][]{owasp_top_ten} der
+	am meisten ausgenutzten Sicherheitslücken veröffentlicht.
+	Diese Listen sollen Unternehmen dazu animieren,
+	sichere \webApplications{} bereitzustellen und sich gegen eben diese Bedrohungen zu schützen.
+	Die zu diesem Zeitpunkt aktuellste Version ist die Liste aus dem Jahr 2021.
+	Folgend werden die darin erhaltenen Sicherheitslücken aufgezählt,
+	erläutert und erklärt, wie Entwickler Anwendungen dagegen schützen können.
+
+	\myparagraph[A01:2021]{A01:2021 - Broken Access Control}
+	Die sogenannten Fehler in der Zugriffskontrolle gewinnen gegenüber 2017 sehr an Bedeutung,
+	da diese von Platz 5 auf Platz 1 gesetzt wurden.
+
+	Falls Benutzer einer Anwendung mehr Rechte bekommen als eigentlich vorgesehen,
+	führt dies unweigerlich zur Freigabe von Daten,
+	für die diese nicht \glslink{autorisierung}{autorisiert} sind.
+	Das könnten Angreifer über das Umgehen der Zugriffskontrollen erreichen,
+	indem beispielsweise die \gls{url} verändert wird,
+	die mitgeschickten Metadaten manipuliert oder das \gls{jwt} erneut verwendet oder modifiziert wird.
+
+	Schon bei der Entwicklung müssen daher Rechte,
+	Rollen und Regeln klar definiert sein,
+	wie sich Benutzer \glslink{authentifizierung}{authentifizieren} können und
+	welche Rechte an welche Benutzer vergeben werden dürfen.
+	Dies sollte zudem durch Protokollierung der Ereignisse und
+	Invalidierung der \glspl{jwt} sichergestellt werden.
+
+	\newpage
+
+	\myparagraph[A02:2021]{A02:2021 - Cryptographic Failures}
+	Vorher als \enquote{Sensitive Data Exposure}
+	oder \enquote{Verlust der Vertraulichkeit sensibler Daten} bekannt,
+	rücken die \enquote{kryptographischen Fehler} auf Platz 2 der Liste.
+
+	In der Regel werden hierbei \glspl{manInTheMiddleAngriff} ausgeführt,
+	welche darauf abzielen, nicht die Verschlüsselung selbst zu brechen,
+	sondern die Daten der Übertragung zur Kompromittierung zu nutzen.
+	Des Weiteren kann durch das Verwenden unsicherer Protokolle,
+	älterer Verschlüsselungsverfahren oder keiner verbindlich erzwungener Verschlüsselung,
+	die Verwundbarkeit der Anwendung erhöht werden.
+
+	Verhindern kann man diese Bedrohung durch das Vermeiden von unnötigem Speichern von sensiblen Daten,
+	Deaktivieren des Caches für diese Daten,
+	oder durch die Nutzung sicherer Transportprotokolle.
+
+	\myparagraph[A03:2021]{A03:2021 - Injection}
+	Diese Bedrohung ist von Platz 1 auf 3 herabgesetzt worden.
+
+	Falls die \webApplication{} oder der \gls{webservice} eine Datenbankanbindung verwaltet,
+	ist \enquote{Injection} eine beliebte Angriffsstrategie.
+	Angreifer versuchen durch gezielte Ausnutzung von \gls{sql}-Queries Daten offenzulegen,
+	zu kompromittieren oder zu löschen.
+	Mit einer gelungenen Injection kann beispielsweise auch ein Administratorkonto vorgespielt werden,
+	was natürlich fatal wäre.
+
+	Durch korrekte Nutzung eines \gls{orm}-\glspl{framework} kann diese Bedrohung verringert werden.
+	Zudem sollten Eingabedaten immer auf nicht erlaubte Buchstaben, sowie Zeichen und Länge geprüft werden.
+
+	\myparagraph[A04:2021]{A04:2021 - Insecure Design}
+	Die neue Kategorie \enquote{Insecure Design} bezieht sich auf Fehler in der Architektur und
+	im Design von Anwendungen.
+
+	Hierbei werden Sicherheitslücken externer \glspl{framework} und Design-Patterns ausgenutzt.
+	Das \gls{owasp} versucht dadurch,
+	Entwickler von Frameworks auf Sicherheitslücken aufmerksam zu machen und
+	sichere Design-Patterns zu fördern.
+
+	Verhindert werden kann das durch die Nutzung mehrfach getesteter Frameworks,
+	sowie die Entwicklung sicherer Entwurfsmuster.
+
+	\myparagraph[A05:2021]{A05:2021 - Security Misconfiguration}
+	Diese Kategorie ist im Vergleich zum Jahr 2017 einen Platz weiter nach oben gerutscht.
+	Sie beinhaltet Lücken in der Konfiguration von Firewalls, \glspl{webservice}
+	und \webApplications.
+
+	Angreifer könnten hierbei versuchen sich über Standardpasswörter Zugang zum System zu verschaffen,
+	oder über Listings der Ordnerpfade die kompilierten Klassen finden,
+	diese dann dekompilieren,
+	um über \enquote{Reverse Engineering} eine Sicherheitslücke zu finden.
+
+	Entwickler können eine derartige Sicherheitslücke minimieren bzw.\ eliminieren,
+	indem sie unnötige Features, \glspl{framework} oder Komponenten deinstallieren
+	und eine \enquote{abgespeckte} Anwendung ausliefern.
+	Weiterhin können über regelmäßige Updates des genutzten Systems/\glspl{framework}
+	veraltete Sicherheitslücken geschlossen werden.
+
+	\myparagraph[A06:2021]{A06:2021 - Vulnerable and Outdated Components}
+	Am zweitstärksten gewinnt diese Kategorie an Bedeutung,
+	da ihre Wichtigkeit um 3 Stufen gestiegen ist.
+	Erfasst wird die Nutzung von Komponenten mit bekannten Schwachstellen.
+
+	Ein aktuelles Beispiel davon ist die am 10.\ Dezember 2021 bekanntgewordene Sicherheitslücke
+	des Logging-\glspl{framework} \enquote{Log4j} von Java.
+	Durch die interne Struktur der Sprache können so Exploits vorgenommen und der Host-Rechner kontrolliert werden.
+
+	Unternehmen sollten daher immer darüber informiert sein,
+	welche externen Bibliotheken genutzt werden,
+	wie diese funktionieren und ob diese auf dem neuesten Stand sind.
+	Im Falle eines Logging-\glslink{framework}{Frameworks} oder anderen Basiskomponenten
+	ist es also manchmal auch von Vorteil,
+	den Code entweder selbst zu schreiben oder Klassen (wie z.\ B.\ java.util.logging)
+	direkt aus dem \gls{jdk} zu nutzen.
+
+	\myparagraph[A07:2021]{A07:2021 - Identification and Authentication Failures}
+	Sehr an Bedeutung verloren haben die \enquote{Fehler in der \gls{authentifizierung}}.
+
+	Angriffe auf die \gls{authentifizierung} sind gut erforscht,
+	wodurch es bereits sehr viele Skripte gibt,
+	welche Wörterbücher als Datengrundlage nutzen,
+	um durch \gls{bruteforce}-Angriffe Benutzernamen und Passwörter herauszufinden.
+	Besonders gefährdet sind auch \glspl{webservice} mit nicht erlöschenden Session-Tokens,
+	welche dann für die falsche \gls{authentifizierung} genutzt werden können.
+
+	Sofern möglich, sollten daher folgende Themen implementiert sein,
+	um der \gls{authentifizierung} einen höheren Sicherheitsstandard mitzugeben.
+	Für die Risikominimierung automatisierter Angriffe
+	sollte eine Mehrfaktor-\gls{authentisierung} implementiert werden
+	und im Zuge dessen sollten auch alle Passwörter für ein neu angelegtes Nutzerkonto
+	gegen eine Liste der 10000 beliebtesten Passwörter geprüft werden.
+	Zusätzlich dazu dürfen im Auslieferungszustand keine Standardbenutzer
+	und/oder administrative Nutzer vorhanden sein,
+	wobei auch bei fehlgeschlagenen Anmeldeversuchen immer die gleiche Fehlermeldung zurückgegeben werden soll,
+	um somit die Nutzernamen nicht erraten zu können.
+
+	\myparagraph[A08:2021]{A08:2021 - Software and Data Integrity Failures}
+	Die zweite neue Kategorie bezieht sich auf Sicherheitslücken in Software-Updates,
+	kritischen Daten und \glspl{ciCdPipeline} ohne Integritätsprüfung.
+	Hierzu zählt unter anderem die veraltete Kategorie aus 2017 \enquote{A08:2017 - Insecure Deserialization}.
+
+	Beispielsweise kann im Prozess der Deserialisierung angesetzt werden,
+	um mit fehlerhaften Routinen Schadcode auf dem \gls{webservice} ausführen zu können.
+	Des Weiteren kann über eine fehlende Prüfung neuer Pakete,
+	welche automatisiert nachgeladen werden,
+	externer Code auf einem bestehendem System installiert und ausgeführt werden.
+
+	Digitale Signaturen oder ähnliche Mechanismen für die Validierung der Pakete sind daher erforderlich,
+	um solche Risiken auszuschließen.
+	Zudem sollte -- gerade im Kontext von \webApplications{} -- sichergestellt werden,
+	dass Paketmanager (wie z.\ B.\ Maven, Gradle oder npm) Code nur aus vertrauenswürdigen Quellen laden.
+
+	\myparagraph[A09:2021]{A09:2021 - Security Logging and Monitoring Failures}
+	Die damalige Kategorie \enquote{A10:2017 - Insufficient Logging \& Monitoring} beinhaltet vor allem
+	unzureichende Protokollierung von Anmeldeversuchen oder falsche Sichtbarkeit von Logging-Informationen.
+
+	Angreifer können also automatisiert und mit großer Anzahl an Tests versuchen,
+	Anmeldedaten zu erraten.
+	Weiterhin könnten Logs abgegriffen und interpretiert werden.
+
+	Es ist also dringend erforderlich,
+	Anmeldeversuche zu protokollieren und die richtigen Schlüsse daraus zu ziehen,
+	beispielsweise die \gls{ip}-Adresse zu sperren oder ähnliches.
+	Weiterhin muss darauf geachtet werden,
+	wohin die Logs geschrieben werden,
+	da diese Informationen für außenstehende Personen nicht zugänglich sein dürfen.
+
+	\myparagraph[A10:2021]{A10:2021 - Server-Side Request Forgery (SSRF)}
+	Die \gls{ssrf} ist die dritte neue Bedrohung in 2021
+	und bezieht sich auf die Kontrolle des \glspl{webservice} über Requests,
+	welche vom Angreifer so manipuliert werden,
+	dass die Applikation anderen Code als geplant ausführt oder sogar geschützte Daten preisgibt.
+
+	Ausgenutzt werden kann dies,
+	indem zum Beispiel \gls{url}-Anforderungen durch \lstinline!127.0.0.1! oder \enquote{localhost} ersetzt werden
+	und diese dadurch an das eigene Lookup-Interface weitergeleitet werden.
+
+	Schutzmechanismen dagegen sind rar,
+	da sich unter anderem nicht einmal Bibliotheken einig sind,
+	wie gewisse \glspl{uri} zu interpretieren sind.
+	Es könnte allerdings -- je nach Anwendung -- entweder der Whitelist,
+	oder der Blacklist Ansatz für die Validierung der \glspl{url} verwendet werden.

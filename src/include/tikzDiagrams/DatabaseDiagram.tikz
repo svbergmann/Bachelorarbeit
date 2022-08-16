@@ -1,0 +1,47 @@
+\begin{tikzpicture}
+	\pic {entity={ssa}{~~~sids\_stars\_approache~~~}{
+		custareaCode \\
+		countryCode \\
+		icaoCode \\
+		portIdent \\
+		sidStarApproachIdent \\
+		sidStarApproacheTyp \\
+		routeTyp \\
+		transitionIdent \\
+		sequenceNumber
+	}};
+	\pic[right=of ssa] {entity={country}{country}{
+		countryCode \\
+		custareaCode \\
+		icaoCode \\
+		countryName \\
+		displayFilter
+	}};
+	\pic[below=of country] {entity={airport}{airport}{
+		custareaCode \\
+		countryCode \\
+		icaoCode \\
+		ident
+	}};
+	\pic[below=of airport] {entity={waypoint}{waypoint}{
+		custareaCode \\
+		countryCode \\
+		regnArptCode \\
+		regnArptIcaoCode \\
+		ident \\
+		icaoCode
+	}};
+	\pic[below=of ssa] {entity={navaid}{navaid}{
+		custareaCode \\
+		countryCode \\
+		icaoCode \\
+		arptIdent \\
+		arptIcaoCode \\
+		ident \\
+		typ \\
+		classField1 \\
+		classField2
+	}};
+	\node[draw, shape=rectangle, below=of waypoint, text width=0.5\textwidth]
+	{Bemerkung: Zur besseren Übersichtlichkeit sind hier nur die Attribute dargestellt, welche als Primärschlüssel gekennzeichnet sind.};
+\end{tikzpicture}

@@ -1,0 +1,82 @@
+\documentclass[
+	listof=totoc,
+	numbers=noenddot,
+	twoside,
+	ngerman,
+	BCOR=15mm,
+	openright
+]{scrreprt}
+
+\pdfsuppresswarningpagegroup=1
+
+\setcounter{tocdepth}{\subsectiontocdepth}
+\setcounter{secnumdepth}{3}
+
+\input{include/angaben}
+\input{include/preamble}
+\input{include/FrequentWords}
+
+\DeclareTOCStyleEntry[dynnumwidth]{tocline}{figure}
+\DeclareTOCStyleEntries[
+	level:=figure,
+	indent:=figure,
+	numwidth:=figure,
+	dynnumwidth
+]{tocline}{table,lstlisting,algocf,todo}
+\DeclareTOCStyleEntries[
+	pagenumberbox=\mbox
+]{tocline}{chapter,section,subsection,subsubsection,paragraph,subparagraph,figure,table,lstlisting}
+
+\begin{document}
+
+	\hypersetup{pageanchor=false}
+	\pagestyle{empty}
+	\newgeometry{left=30mm,right=30mm,top=30mm,bottom=30mm}
+	\include{content/frontmatter/titlepage}
+	\include{include/offizielleVorlagen/eidesstattlicheerklaerung}
+%	\includepdf{include/offizielleVorlagen/eidesstattlicheerklaerung_signed_cropped}
+
+	\cleardoublepage
+	\addtocounter{table}{-1}
+	\restoregeometry
+	\pagenumbering{Roman}
+	\setcounter{page}{1}
+	\hypersetup{pageanchor=true}
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\lstlistoflistings
+	\printnoidxglossary[type=\acronymtype, style=long]
+	\printnoidxglossary[type=main, style=list, nonumberlist]
+	\glsresetall
+	\clearpage
+	\input{include/offizielleVorlagen/genderErklaerung.tex}
+	\cleardoublepage
+
+	\pagenumbering{arabic}
+	\setcounter{page}{3}
+	\pagestyle{scrheadings}
+	\renewcommand*{\chapterpagestyle}{scrheadings} \renewcommand*{\chaptermarkformat}{}
+
+	\include{content/mainmatter/1Einleitung/einleitung}
+	\include{content/mainmatter/2Grundlagen/grundlagen}
+	\include{content/mainmatter/3Aufgabenstellung/aufgabenstellung}
+	\include{content/mainmatter/4Analyse/analyse}
+	\include{content/mainmatter/5Realisierung/realisierung}
+	\include{content/mainmatter/6ErgUndSchlussfolgerungen/ergundschlussfolg}
+	\include{content/mainmatter/7ZusammenfassungUndAusblick/zusammenfassungundausblick}
+
+	\pagestyle{empty}
+	\clearpairofpagestyles
+	\KOMAoption{headsepline}{false}
+	\KOMAoption{footsepline}{false}
+	\printbibliography[heading=bibintoc,title=Literaturverzeichnis]
+
+	\cleardoublepage
+
+	\pagestyle{scrheadings}
+	\ofoot{\thepage}
+	\include{content/backmatter/anhang}
+
+	\glsaddallunused
+\end{document}

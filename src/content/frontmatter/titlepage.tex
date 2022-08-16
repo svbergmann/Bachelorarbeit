@@ -1,0 +1,46 @@
+% Titelseite für eine Seminar-oder Bachelorarbeit.
+% Es werden in der Preambel folgende Pakete benötigt:
+% svg, geometry, tikz, tikzpagenodes, graphicx
+% Des Weiteren sollte die Datei <angaben.tex> vor der Preambel eingebunden werden.
+
+\begin{titlepage}
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north, inner sep=0pt] at (current page text area.north) {\includegraphics[width=0.4\columnwidth]{include/img/CAE_rgb_bright_blue_svg-tex}};
+		\node[anchor=north east, yshift=-10mm, inner sep=0pt] at (current page.north east) {\includegraphics[height=48mm]{include/img/fhac}};
+	\end{tikzpicture}
+
+	\vspace{4cm}
+
+	\begin{center}
+
+		\textsc{\LARGE Fachhochschule Aachen, Campus Jülich}\\[0.5cm]
+		\textsc{\large Fachbereich 09 - Medizintechnik und Technomathematik}\\
+		\textsc{\large Studiengang Angewandte Mathematik und Informatik}\\[1.5cm]
+		\textsc{\Large \myThesistype}\\[0.5cm]
+
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+		\HRule \\[0.5cm]
+		{ \huge \bfseries \myTitle}\\[0.2cm]
+		\HRule \\
+
+		\vfill
+
+		\begin{flushleft}
+			\large
+			\emph{Autor:}\\
+			\myAuthor, \myMatriculationnumber\\[2em]
+			\emph{Betreuer:} \\
+			\myFirstexaminer\\
+			\mySecondexaminer
+		\end{flushleft}
+
+		\vfill
+
+		\myStudylocation, den 8.\ August 2022
+
+	\end{center}
+
+\end{titlepage}
+\newpage
+\cleardoublepage

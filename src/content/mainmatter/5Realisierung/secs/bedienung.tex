@@ -1,0 +1,23 @@
+\section{Bedienung}\label{sec:bedienung}
+
+	Falls ein Client beim \nameref{subsec:autorisierungsserver} registriert ist
+	und Rechte, Bereiche sowie eine ID zugewiesen bekommen hat,
+	so funktioniert die Bedienung immer genauso wie es in \vref{fig:appsequence} dargestellt ist.
+	Zuerst muss der Client ein \gls{jwt} beim \nameref{subsec:autorisierungsserver} beantragen,
+	welcher dieses nach erfolgreicher Validierung als Antwort zurückschickt.
+	Danach folgt erst die eigentliche Anfrage der Daten.
+	Die Abbildungen \nameref{fig:http-methoden-S1},
+	\nameref{fig:http-methoden-S2}
+	und \nameref{fig:http-methoden-S3} zeigen die momentan
+	verfügbaren \glspl{url} des \hyperref[subsec:webservice]{Webservices},
+	welche alle
+	-- bis auf \inlinelst{/api/Coun\-tries/full\-Anony\-mous}
+	\footnote{Die Route \inlinelst{/api/Countries/fullAnonymous} wurde zu Testzwecken eingeführt,
+		um vor allem die \vref{fig:timeOfRequests} erstellen zu können.} --
+	nur über eine vorherige \gls{autorisierung} erreichbar sind.
+	Der Client muss nun also zusammen mit dem \gls{jwt} im Header eine Anfrage an eine dieser Methoden losschicken,
+	welche dann vom \nameref{subsec:webservice} weiter bearbeitet werden kann.
+	Dieser lässt zuerst das Token durch den \nameref{subsec:autorisierungsserver} validieren,
+	um bei Erfolg die Daten bei der Datenbank des \lfidSystems{} über eine \gls{sql}-Anfrage abfragen zu können.
+	Falls die Daten erfolgreich aus der Datenbank gelesen wurden,
+	werden diese wieder als \gls{json}-Objekt an den Clienten zurückgeschickt.

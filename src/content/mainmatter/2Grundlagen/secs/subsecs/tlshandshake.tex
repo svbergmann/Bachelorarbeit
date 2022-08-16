@@ -1,0 +1,37 @@
+\subsection{TLS Handshake Protocol}\label{subsec:tls-handshake-protocol}
+	Alle \gls{tls} Handshakes nutzen ein asymmetrisches Verschlüsselungsverfahren.
+	Das Protokoll durchläuft dafür folgende Schritte:
+
+	\begin{compactenum}
+		\item Der Client schickt eine \enquote{Hello} Nachricht an den Server
+		und leitet somit den Handshake ein.
+		Die Nachricht besteht aus der unterstützten \gls{tls}-Version,
+		den unterstützten \glspl{cipher-suite}
+		und einer zufälligen Anordnung von Bytes,
+		welche als \enquote{Client Random} bezeichnet werden.
+
+		\item Die Antwort vom Server,
+		auch als \enquote{Server-Hello} bezeichnet,
+		enthält das \gls{ssl-zertifikat},
+		die ausgewählte \gls{cipher-suite} und ein \enquote{Server Random},
+		welches ebenfalls eine Byte-Folge ist.
+
+		\item Der Client prüft daraufhin das \gls{ssl-zertifikat} bei der Zertifizierungsstelle.
+
+		\item Anschließend wird das \enquote{Premaster Secret},
+		eine zufällig generierte Byte-Folge,
+		mit dem im \gls{ssl-zertifikat} enthaltenen öffentlichen Schlüssel verschlüsselt
+		und an den Server geschickt,
+		welcher dieses nur mit dem privaten Schlüssel wieder entschlüsseln kann.
+
+		\item Der Server entschlüsselt nun das \enquote{Premaster Secret},
+		woraufhin beide Partner einen Sitzungsschlüssel aus \enquote{Client Random},
+		\enquote{Server Random} und \enquote{Premaster Secret} generieren.
+
+		\item Nun senden Client und Server jeweils eine \enquote{Fertig}-Nachricht,
+		welche beide mit dem Sitzungsschlüssel verschlüsselt sind.
+
+		\item Der Handshake ist abgeschlossen
+		und die weitere Kommunikation wird mit dem Sitzungsschlüssel fortgesetzt.
+
+	\end{compactenum}

@@ -1,0 +1,94 @@
+\section{Sicherheitsaspekte}\label{sec:sicherheitsaspekte}
+
+	Für die bessere Übersicht der realisierten und behandelten Sicherheitsaspekte wird alles,
+	was im Folgenden behandelt wird,
+	noch einmal in \vref{tab:itSicherheitsanforderungstabelle} kurz zusammengefasst.
+	Zur Beibehaltung der Struktur werden die Risiken der \nameref{sec:owasp}
+	zu einigen Anforderungen des \hyperref[sec:it-grundschutz-kompendium]{IT Grundschutz Kompendiums}
+	zugeordnet und -- wenn möglich -- chronologisch abgearbeitet.
+
+	Die Bedrohung \nameref{par:A01:2021} wird dadurch abgeschwächt,
+	dass es bei diesem \gls{webservice} zwar keine klassischen Nutzer gibt,
+	jedoch jedes \glslink{autorisierung}{autorisierte} Programm eigene Rechte
+	und Bereiche zugewiesen bekommt,
+	welche freigegeben und erreicht werden dürfen.
+	Damit wird vor allem die \hyperref[par:APP.3.1]{Basis Anforderung}
+	\nameref{subpar:APP.3.1.A1} neben anderen erfüllt.
+
+	Durch die Nutzung von \nameref{sec:tls/ssl} wird \nameref{par:A02:2021} entgegengewirkt,
+	da somit die übertragenen Daten generell verschlüsselt sind
+	und auch gar nicht erst verschickt werden,
+	falls der Kommunikationspartner nicht \glslink{autorisierung}{autorisiert} ist.
+	Dies kann den \hyperref[par:APP.3.2]{Standard-Anforderungen}
+	\nameref{subpar:APP.3.1.A8}, \nameref{subpar:APP.3.1.A9}
+	und \nameref{subpar:APP.3.1.A11}
+	zugeordnet werden.
+
+	Da \nameref{subsubsec:netcore21} mit einem \gls{framework} zur Erstellung eines \glspl{webservice} genutzt wird,
+	wird bei jeder Route automatisch gefragt,
+	ob der gegebene Parameter dem Übergabewert entspricht.
+	Zudem sind die Implementierungen der Methoden mit \gls{linq} gestaltet,
+	was bedingt,
+	dass intern Microsofts Entity Framework für die Datenbankabfragen genutzt wird,
+	wodurch die übergebenen Werte noch zusätzlich geprüft werden
+	und quasi keine \gls{sql}-Injektion mehr möglich ist.
+	Hiermit wird \nameref{subpar:APP.3.1.A14},
+	\nameref{subpar:APP.3.1.A9}
+	und \nameref{subpar:APP.3.1.A11} erfüllt
+	sowie \nameref{par:A03:2021} entgegen gewirkt.
+
+	Die vierte Bedrohung, \nameref{par:A04:2021},
+	bezieht sich vor allem auf \nameref{subpar:APP.3.1.A8} und \nameref{subpar:APP.3.1.A9},
+	die Beschaffung von externem Material,
+	da vor allem auch Fremdcode auf Sicherheit geprüft werden muss.
+	Dieses Programm benutzt daher auch nur Pakete,
+	welche entweder direkt von Microsoft zur Verfügung gestellt werden oder sehr viele Nutzer
+	und positive Einträge in Bezug auf die Sicherheit hat.
+	Zudem wird bei jedem Paket oder auch \gls{framework} darauf geachtet,
+	dass der aktuellste Patch der jeweiligen Version genutzt wird,
+	keine Versionskonflikte entstehen
+	und notwendige Updates durchgeführt werden.
+	Damit wird auch direkt
+	\nameref{par:A06:2021}
+	und \nameref{par:A08:2021} entgegen gewirkt.
+	Leider kann dies aber hinsichtlich der Rahmenbedingungen des \hyperref[subsec:betriebssystem]{Betriebssystems}
+	nicht bei .NET Core gewährleistet werden.
+
+	Da der \gls{webservice} so offen wie nötig,
+	aber so restriktiv wie möglich gestaltet werden soll und wurde,
+	wird  \nameref{par:A05:2021}
+	und \nameref{par:A07:2021} angegangen.
+	Speziell können \nameref{subpar:APP.3.1.A1},
+	\nameref{subpar:APP.3.1.A7},
+	\nameref{subpar:APP.3.1.A14},
+	\nameref{subpar:APP.3.1.A9}
+	und \nameref{subpar:APP.3.1.A12} dieser Bedrohung zugeordnet werden.
+	Von Anfang an wurden nur \glslink{autorisierung}{autorisierten} Clienten Methoden freigegeben
+	und keine Standardpasswörter oder -benutzerkennungen benutzt,
+	wobei eine zusätzliche Sicherheitsebene durch den implementierten \nameref{subsec:oauth-2.0}-Standard,
+	sowie dem Auslaufen der somit generierten \hyperref[par:access-token]{Access Tokens} geschaffen wurde.
+
+	Zur Aufzeichnung der Aktionen auf dem \gls{webservice} sollten während jeder Sitzung Logging-Dateien erstellt werden,
+	was auch von \nameref{subpar:APP.3.1.A1} gefordert ist.
+	Um beispielsweise fehlgeschlagene Anmeldeversuche erkennen
+	und nach Gefährlichkeit einstufen zu können,
+	müssen diese Informationen sicher gespeichert werden
+	und insbesondere dürfen diese nicht an den Nutzer weitergeben werden.
+	Damit wird \nameref{par:A09:2021} vereitelt,
+	falls unter anderem bei einem fehlgeschlagenen \glslink{authentifizierung}{Authentifizierungsversuch}
+	dieser gespeichert wird
+	und an den Nutzer nur die Meldung zurückgegeben wird,
+	dass der Versuch nicht erfolgreich war.
+	Zusätzlich wird durch die Protokollierung \nameref{subpar:APP.3.1.A7} erfüllt.
+	Hier werden alle Aktionen des \glspl{webservice} in einer Datei gespeichert,
+	welche von außen nicht einsehbar ist,
+	um alles nachvollziehen zu können.
+
+	Die letzte zu behandelnde Bedrohung \nameref{par:A10:2021}
+	zielt eher auf eine Gefährdung für den Nutzer
+	und nicht für den bereitstellenden Dienst ab.
+	Trotzdem kann damit noch einmal die Anforderung \nameref{subpar:APP.3.1.A12} angesprochen
+	und realisiert werden,
+	da schon mit einer restriktiven Freigabe von Methoden sehr viel erreicht wird,
+	was sich auch in der Implementierung wiederfindet.
+

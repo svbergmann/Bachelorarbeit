@@ -1,0 +1,48 @@
+\section{HTTP}\label{sec:http}
+	1996 wurde die erste Version des \gls{http}
+	-- \gls{http}/1.0\footcite[Vgl.][]{rfc1945} --
+	veröffentlicht.
+	Seither wird das Protokoll vor allem für kleinere \glspl{webservice} genutzt,
+	da es schnell, leichtgewichtig und einfach zu implementieren ist.
+	Um die Ladezeiten des Protokolls zu verbessern,
+	wurde 1999 \enquote{\gls{http}/1.1}\footcite[Vgl.][]{rfc7230} veröffentlicht und standardisiert.
+	Es existierte nun ein Header Feld namens \enquote{Connection: keep-alive},
+	welches vom Clienten dazu genutzt werden kann,
+	die darunterliegende \glslink{tcp}{TCP-Verbindung} aufrechtzuerhalten.
+	Das \enquote{\gls{http}/2.0}\footcite[Vgl.][]{rfc7540} stellte eine erneute Beschleunigung der Übertragung dar.
+	Mit einer Abwärtskompatibilität zur Version 1.1 wurde diese Version 2015 standardisiert
+	und kann nach einer Anfrage des Clienten mit dem Header Feld \enquote{Connection: Upgrade} genutzt werden.
+	Die Neuheit war nun das \enquote{Multiplexing},
+	was eine Aufteilung der Datenübertragung in Streams darstellt.
+	Diese Streams können nun mehrere Anfragen oder Antworten parallel übertragen,
+	wobei nicht auf die Reihenfolge geachtet werden muss,
+	da jeder Stream eine eindeutige ID besitzt.
+
+	Für jede Aktion werden unterschiedliche Methoden im \gls{http} genutzt.
+	So existiert unter anderem zu jeder Operation aus dem Akronym \gls{crud} eine äquivalente \httpMethode.
+	Die Methoden werden im Folgenden aufgeführt und erklärt und
+	-- falls möglich --
+	einer \crudOperation{} zugewiesen.
+	\begin{compactitem}
+		\item{\textbf{GET}}\label{itm:httpget} fordert eine im Request-\glsname{uri}
+		definierte Ressource an. (\textbf{READ})
+
+		\item{\textbf{HEAD}}\label{itm:httphead} ist ähnlich wie GET, übermittelt aber nur den Header ohne den Body.
+
+		\item{\textbf{POST}}\label{itm:httppost} überträgt Daten an den Server. (\textbf{CREATE})
+
+		\item{\textbf{PUT}}\label{itm:httpput} möchte alle Daten, welche momentan auf dem Server liegen,
+		mit den eigenen Daten überschreiben. (\textbf{UPDATE})
+
+		\item{\textbf{DELETE}}\label{itm:httpdelete} löscht Dokumente auf dem Server
+		(sofern die Rechte dazu vorhanden sind). (\textbf{DELETE})
+
+		\item{\textbf{CONNECT}}\label{itm:httpconnect} kann einen Tunnel zum Server
+		für die bidirektionale Kommunikation öffnen.
+
+		\item{\textbf{OPTIONS}}\label{itm:httpoptions} fordert den Zugriffspfad einer Ressource an
+		und die weitere Kommunikation, welche darüber möglich ist.
+
+		\item{\textbf{TRACE}}\label{itm:httptrace} ist zum Testen.
+		Die Anfrage wird vom Server zurückgeschickt.
+	\end{compactitem}

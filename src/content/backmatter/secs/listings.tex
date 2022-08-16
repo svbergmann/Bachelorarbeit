@@ -1,0 +1,109 @@
+\chapter{Listings}\label{ch:listings}
+
+
+	\section{Authorization Server}\label{sec:authorization-server}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:authorizationServerProgram},
+			caption={Program.cs in Autorisierungsserver}]
+		{include/listings/authorizationserver/Program.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:authorizationServerStartup},
+			caption={Startup.cs in Autorisierungsserver}]
+		{include/listings/authorizationserver/Startup.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:authorizationServerConfig},
+			caption={Config.cs in Autorisierungsserver}]
+		{include/listings/authorizationserver/Config.cs}
+
+		\pagebreak
+
+
+	\section{Webservice}\label{sec:webservice}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:webServiceProgram},
+			caption={Program.cs in Webservice}]
+		{include/listings/webservice/Program.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:webServiceConfigureServices},
+			caption={ConfigureServices in Webservice}]
+		{include/listings/webservice/ConfigureServices.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:webServiceConfigure},
+			caption={Configure in Webservice}]
+		{include/listings/webservice/Configure.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:webServiceDataNotFoundException},
+			caption={DataNotFoundException in Webservice}]
+		{include/listings/webservice/DataNotFoundException.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:apiControllerBase},
+			caption={ApiControllerBase.cs in Webservice}]
+		{include/listings/webservice/ApiControllerBase.cs}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:countriesController},
+			caption={CountriesController.cs in Webservice}]
+		{include/listings/webservice/CountriesController.cs}
+
+		\pagebreak
+
+
+	\section{WebserviceTests}\label{sec:webservicetests}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:authorizedClientFixture},
+			caption={AuthorizedClientFixture.cs in WebserviceTests}]
+		{include/listings/webservice/tests/AuthorizedClientFixture.cs}
+
+		\pagebreak
+
+		\lstinputlisting[style=CSharp,
+			label={lst:countriesSQLTest},
+			caption={CountriesSQLTest.cs in WebserviceTests}]
+		{include/listings/webservice/tests/CountriesSQLTest.cs}
+
+		\pagebreak
+
+		\lstinputlisting[style=CSharp,
+			label={lst:countriesWebTestAuthorized},
+			caption={CountriesWebTestAuthorized.cs in WebserviceTests}]
+		{include/listings/webservice/tests/CountriesWebTestAuthorized.cs}
+
+		\pagebreak
+
+		\lstinputlisting[style=CSharp,
+			label={lst:countriesWebTestUnauthorized},
+			caption={CountriesWebTestUnauthorized.cs in WebserviceTests}]
+		{include/listings/webservice/tests/CountriesWebTestUnauthorized.cs}
+
+		\pagebreak
+
+
+	\section{Demo Anwendung}\label{sec:demo-anwendung}
+
+		\lstinputlisting[style=CSharp,
+			label={lst:demoApplicationApplication},
+			caption={Application.cs in der Demo Anwendung}]
+		{include/listings/demoapplication/Application.cs}
+
+		\pagebreak
+
+		\lstinputlisting[style=CSharp,
+			label={lst:demoApplicationRequestToken},
+			caption={Token in der Demo Anwendung beantragen}]
+		{include/listings/demoapplication/RequestToken.cs}
+
+		\pagebreak
+
+		\lstinputlisting[style=CSharp,
+			label={lst:demoApplicationFetchData},
+			caption={Datenabfrage in der Demo Anwendung}]
+		{include/listings/demoapplication/FetchData.cs}

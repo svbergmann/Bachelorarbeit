@@ -1,0 +1,64 @@
+\subsection{Mögliche Frameworks}\label{subsec:moegliche-frameworks}
+	Zur Vereinheitlichung der Implementierung sollen wenn möglich \glspl{framework} genutzt werden,
+	welche den ganzen Prozess vereinfachen,
+	sodass bestenfalls nicht zusätzlich in unterschiedlichen Sprachen programmiert werden muss.
+	Da so wenig andere Pakete wie nötig auf dem Zielsystem installiert werden sollen,
+	bietet sich die Programmiersprache C\# an.
+	Aufgrund von Rahmenbedingungen älterer \hyperref[subsec:betriebssystem]{Betriebssysteme}
+	werden im Folgenden die aktuellsten zwei möglichen C\# \glspl{framework} vorgestellt.
+
+	\subsubsection{\netframework}\label{subsubsec:netframework}
+		Dieses \gls{framework} ist das in Windows meistgenutzte
+		und älteste Konzept,
+		um Anwendungen zu erstellen.
+		Mit dem Nu-Get Paketmanager lässt sich externer Code einbinden,
+		womit unter anderem die Datenbankanbindung leicht und einheitlich implementiert werden kann.
+		Hier werden allerdings keine Microservices unterstützt,
+		wodurch sich \netframework{} eher zur Programmierung von \glspl{gui} eignet.
+		Zudem ist ein kompiliertes \netframework{}-Projekt nicht alleine lauffähig,
+		daher wird seit Windows Vista \netframework{} zusammen mit den Windows Updates installiert.
+
+	\subsubsection{\netcore}\label{subsubsec:netcore21}
+		\netcore{} wurde am 30.05.2018 von Microsoft zur Nutzung in Visual Studio 2017 Version 15.7 herausgebracht.
+		Hiermit wird ein \gls{framework} bereitgestellt,
+		welches als Open Source Projekt für Windows,
+		MacOS und Linux fungiert.
+		Entwickler können damit plattformübergreifende Anwendungen programmieren
+		und mit dem NuGet Paketmanager eine Reihe an bereits existierendem Code einbinden und nutzen,
+		egal ob dieser von Microsoft oder von anderen Entwicklern in dieser Gemeinschaft stammt.
+		So findet sich dort unter anderem Code für die Erstellung von \glspl{webservice}
+		und \glslink{authentifizierung}{OAuth 2.0 Authentifizierungsservices}.
+		Für die Arbeit mit einer SQL-Datenbank bietet sich vor allem
+		das \enquote{Entity Framework Core}-Paket von Microsoft an,
+		welches die Anbindung und Nutzung dieser,
+		unter anderem mit \gls{linq},
+		extrem vereinfacht und standardisiert.
+
+	\subsubsection{Vergleich beider Frameworks}\label{subsubsec:vergleich-beider-frameworks}
+		Beide vorangegangenen \glspl{framework} sind also theoretisch möglich und nutzbar.
+		Allerdings gibt es einige zu berücksichtigende Gesichtspunkte,
+		welche die Entscheidung für ein \gls{framework} vereinfachen.
+		Für beide \glspl{webservice} (Daten- und Authentifizierungsservice) wurde nun \nameref{subsubsec:netcore21} genutzt,
+		da sich die Erstellung und auch das Hosten hierin einfacher gestaltet.
+		In \nameref{subsubsec:netframework} können beispielsweise nur schwierig selbsthostende \glspl{webservice} erstellt werden,
+		da Microsoft die \gls{iis} bereitstellt,
+		um derartige Dinge zu lösen.
+		Will man nun allerdings ein selbsthostendes Programm erstellen,
+		wie es in dieser Arbeit der Fall ist,
+		so muss dies in \nameref{subsubsec:netcore21} realisiert werden.
+		Des Weiteren ist es allerdings so,
+		dass in \nameref{subsubsec:netcore21} nur schwierig grafische Anwendungen erstellt werden können.
+		Es gestaltet sich also einfacher und fast schon intuitiver,
+		auf die Konzepte von \nameref{subsubsec:netframework},
+		wie \gls{wpf} oder Windows Forms zurückzugreifen.
+		Das Demoprogramm zum Testen der beiden \glspl{webservice} wird also in \nameref{subsubsec:netframework} implementiert.
+		Abschließend ist noch zu erwähnen,
+		dass Microsoft den \enquote{.NET Standard} als Bindeglied zwischen beiden \glspl{framework} eingeführt hat,
+		um die Benutzung gemeinsamer Bibliotheken zu ermöglichen.
+		Dies wird auch hier genutzt,
+		da die Elemente der Datenbank offensichtlich in beiden Programmen,
+		dem \gls{webservice}
+		und dem Demo-Programm,
+		gleich sind.
+		Weiterhin sind in der \vref{tab:netcorevsnetframework} noch einmal einige Unterschiede aufgeführt,
+		welche zu der vorhergehenden Entscheidung beigetragen haben.

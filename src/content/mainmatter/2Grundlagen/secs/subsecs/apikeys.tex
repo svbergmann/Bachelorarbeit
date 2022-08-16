@@ -1,0 +1,15 @@
+\subsection{API-Keys}\label{subsec:api-keys}
+	Die \gls{api}-Keys eignen sich zur einfachen \gls{autorisierung} eines Clienten
+	und werden häufig von Programmen genutzt,
+	bei welchen kein direkter Zugriff auf sensible Daten nötig ist.
+	Hierzu wird bei beiden Partnern ein gemeinsamer Schlüssel hinterlegt,
+	wodurch der Kommunikationspartner identifiziert werden kann.
+	Dieser Schlüssel sollte einmalig vergeben werden und wird im Falle von \gls{rest}
+	und \gls{http} entweder über die Request-Query bei einem POST-Request
+	oder als Header oder \gls{cookie} bei einem GET-Request übergeben.
+	Der \gls{webservice} prüft basierend auf dem Schlüssel die genehmigten oder gesperrten Ressourcen
+	und wertet anhand der \gls{autorisierung} die Anfrage aus.
+	Dieses Verfahren ist stark durch \glspl{manInTheMiddleAngriff} bedroht,
+	was unter anderem dazu führt,
+	dass es nur unter Benutzung des \gls{https} als sicher gilt,
+	da ansonsten der Schlüssel abgefangen und genutzt werden kann.

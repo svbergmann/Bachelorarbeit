@@ -1,0 +1,100 @@
+\subsubsection{Anforderungen}\label{subsubsec:anforderungen-app.3.1}
+	Die Anforderungen an \glspl{webservice} sind wiederum in drei Bereiche unterteilt
+	und zudem sollten immer Zuständigkeiten existieren,
+	sodass eine Stelle immer \enquote{grundsätzlich zuständig} ist
+	und optional auch weitere Zuständigkeiten zugeordnet werden können.
+
+	\myparagraph[APP.3.1]{Basis-Anforderungen}
+	Vor allem die Basis Anforderungen MÜSSEN
+	laut dem \gls{bsi} erfüllt werden\footcite[Vgl.][APP.3.1 S. 3]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A1]{APP.3.1.A1 Authentisierung}
+	\glspl{webservice} MÜSSEN immer so gestaltet sein,
+	dass der Zugriff auf gesperrte Ressourcen nur über eine \gls{authentisierung} erfolgen kann.
+	Die Methode hierfür SOLLTE protokolliert werden,
+	wobei der Betrieb zudem eine Höchstgrenze
+	für fehlgeschlagene Anmeldeversuche festsetzen muss\footcite[Vgl.][APP.3.1 S. 3]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A4]{APP.3.1.A4 Kontrolliertes Einbinden von Dateien und Inhalten}
+	Diese Anforderung entfällt für diesen \gls{webservice},
+	da keine Daten hochgeladen werden.
+
+	\mysubparagraph[APP.3.1.A7]{APP.3.1.A7 Schutz vor unerlaubter automatisierter Nutzung}
+	Es MUSS garantiert sein,
+	dass der \gls{webservice} vor \glslink{autorisierung}{unautorisierter},
+	automatisierter Nutzung geschützt ist,
+	während das Verhalten der Maßnahmen auf \glslink{autorisierung}{autorisierte} Nutzer
+	auch berücksichtigt werden MUSS\footcite[Vgl.][APP.3.1 S. 3]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A14]{APP.3.1.A14 Schutz vertraulicher Daten}
+	Vertrauliche Daten,
+	wie beispielsweise Zugangsdaten,
+	MÜSSEN serverseitig mit Hilfe von \gls{saltedHashVerfahren} abgesichert sein,
+	um diese vor \glslink{autorisierung}{unautorisiertem} Zugriff schützen zu können.
+
+	\myparagraph[APP.3.2]{Standard-Anforderungen}
+	Standard-Anforderungen SOLLTEN grundsätzlich zusammen
+	mit den \nameref{par:APP.3.1} erfüllt sein\footcite[Vgl.][APP.3.2 S. 4]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A8]{APP.3.1.A8 Systemarchitektur [Beschaffungsstelle]}
+	Bereits während der Planung eines \glspl{webservice} SOLLTEN Sicherheitsrichtlinien
+	und -konzepte beachtet werden\footcite[Vgl.][APP.3.1 S. 4]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A9]{APP.3.1.A9 Beschaffung von Webanwendungen und Webservices}
+	Als Ergänzung zu den anderen Anforderungen stellt das IT-Grundschutzkompendium eine Liste bereit,
+	welche Eigenschaften bei der Beschaffung eines \glspl{webservice} zusätzlich
+	beachtet werden SOLLTEN\footcite[Vgl.][APP.3.1 S. 4]{holgerschildt2022}:
+	\begin{compactitem}
+		\item sichere Eingabevalidierung und Ausgabekodierung
+		\item sicheres Session-Management
+		\item sichere kryptografische Verfahren
+		\item sichere Authentisierungsverfahren
+		\item sichere Verfahren zum serverseitigen Speichern von Zugangsdaten
+		\item geeignetes Berechtigungsmanagement
+		\item ausreichende Protokollierungsmöglichkeiten
+		\item regelmäßige Sicherheitsupdates durch den Entwickler der Software
+		\item Schutzmechanismen vor verbreiteten Angriffen auf \webApplications{} und \glspl{webservice}
+		\item Zugriff auf den Quelltext der \webApplication{} oder des \glspl{webservice}
+	\end{compactitem}
+
+	\mysubparagraph[APP.3.1.A11]{APP.3.1.A11 Sichere Anbindung von Hintergrundsystemen}
+	Hintergrundsysteme auf denen Funktionen und Daten ausgelagert sind,
+	SOLLTEN einzig über definierte Schnittstellen ansprechbar sein.
+	Zudem SOLLTE bei netz- und standortübergreifenden Anwendungen die Kommunikation
+	\glslink{authentisierung}{authentisiert}
+	und verschlüsselt ablaufen\footcite[Vgl.][APP.3.1 S. 4]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A12]{APP.3.1.A12 Sichere Konfiguration}
+	Der Zugriff bzw.\ die Anfragen auf Ressourcen
+	und Methoden eines \glspl{webservice} SOLLTEN derart eingeschränkt sein,
+	sodass nur über vorher definierte Pfade kommuniziert werden kann.
+	Alle anderen Methoden und nicht benötigten Ressourcen SOLLTEN deaktiviert werden.
+
+	\mysubparagraph[APP.3.1.A21]{APP.3.1.A21 Sichere HTTP-Konfiguration bei Webanwendungen}
+	Folgende Response-Header SOLLTEN grundsätzlich
+	immer gesetzt sein\footcite[Vgl.][APP.3.1 S. 5]{holgerschildt2022}:
+	\begin{compactitem}
+		\item Content-Security-Policy
+		\item Strict-Transport-Security
+		\item Content-Type
+		\item X-Content-Type-Options
+		\item Cache-Control
+	\end{compactitem}
+	Diese SOLLTEN zudem immer so restriktiv wie möglich gestaltet werden.
+
+	\mysubparagraph[APP.3.1.A22]{APP.3.1.A22 Penetrationstest und Revision}
+	Zur Prüfung auf Sicherheitsprobleme und -verstöße SOLLTEN regelmäßig Penetrationstests
+	und Revisionen durchgeführt werden,
+	wobei die Ergebnisse protokolliert werden SOLLTEN\footcite[Vgl.][APP.3.1 S. 5]{holgerschildt2022}.
+
+	\myparagraph[APP.3.3.]{Anforderungen bei erhöhtem Schutzbedarf}
+	Diese Anforderungen sind dann zu erfüllen,
+	wenn der Schutzbedarf über das dem Stand der Technik entsprechende Schutzniveau herausgeht.
+	Die Bestimmung dieser erfolgt durch
+	eine individuelle Analyse\footcite[Vgl.][APP.3.1 S. 5]{holgerschildt2022}.
+
+	\mysubparagraph[APP.3.1.A20]{APP.3.1.A20 Einsatz von Web Application Firewalls}
+	Eine \gls{waf} SOLLTE eingesetzt werden,
+	um das Sicherheitslevel zu erhöhen.
+	Die Konfiguration dieser ist zudem
+	nach jedem Update anzupassen\footcite[Vgl.][APP.3.1 S. 5]{holgerschildt2022}.

@@ -1,0 +1,16 @@
+\subsection{Betriebssystem}\label{subsec:betriebssystem}
+	Als Betriebssystem wird ein abgespecktes Windows 10 genutzt,
+	welches alle nötigen Services und Programme installiert
+	und alle nötigen Ports freigegeben hat.
+	Somit können ohne Weiteres
+	die fertig gebauten \glslink{dll}{Dynamic Link Libraries (DLLs)} gestartet
+	und benutzt werden,
+	da vorher unter anderem die Datenbank installiert wurde.
+	Wie schon erwähnt,
+	sind mehrere Programme (oder Services) von den Daten abhängig,
+	wodurch jeder Service einen eigenen Datenbankzugriff und daher auch alle Rechte bekommt.
+	Die Installation könnte vereinfacht werden,
+	indem ein Container mit der Datenbank, dem \gls{webservice}
+	und dem \nameref{subsec:autorisierungsserver} bereitgestellt wird
+	und die Ports daraus so freigegeben werden,
+	dass alle Methoden erreicht werden können.

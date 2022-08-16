@@ -1,0 +1,23 @@
+\section{Gesamtstruktur}\label{sec:gesamtstruktur}
+
+	Das entwickelte Softwaresystem besteht mittlerweile aus drei unterschiedlichen Komponenten,
+	welche für einen reibungslosen Betrieb gut zusammenarbeiten müssen.
+	Diese Programme werden dafür benötigt,
+	die \gls{authentifizierung} durchzuführen,
+	Daten abzufragen und diese letztendlich auch auszuwerten.
+	Im Folgenden wird der Code von den einzelnen Bestandteile analysiert und erklärt,
+	wobei nur auf relevante Zeilen/Methoden/Aufrufe eingegangen wird.
+	Die selbsterklärenden Codefragmente bleiben größtenteils unerwähnt
+	um die wichtigen Zeilen/Aufrufe hervorheben zu können,
+	sodass der Code aber trotzdem genau so lauffähig wäre.
+	Zusätzlich ist noch zu erwähnen,
+	dass \nameref{subsubsec:netcore21} per Konstruktion zwei Klassen benötigt
+	um einen \gls{webservice} erstellen zu können.
+	Die Klasse \lstinline!Program.cs! beinhaltet hierbei die \lstinline!Main! Methode,
+	welche intern die Klasse \lstinline!Startup.cs! erstellt.
+
+	\input{content/mainmatter/5Realisierung/secs/subsecs/autorisierungsserver.tex}
+	\input{content/mainmatter/5Realisierung/secs/subsecs/webservice.tex}
+	\input{content/mainmatter/5Realisierung/secs/subsecs/tests.tex}
+	\input{content/mainmatter/5Realisierung/secs/subsecs/demo.tex}
+

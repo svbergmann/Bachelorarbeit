@@ -1,0 +1,13 @@
+\subsection{Demo Anwendung}\label{subsec:demo-anwendung}
+	Diese Anwendung wird zur Nachbildung der Simulatorkomponente genutzt,
+	welche später die Daten abfragen soll.
+	Der Code für die GUI ist hier extra nicht erwähnt,
+	da dieser nicht wirklich relevant für die Arbeit ist
+	und die Erklärung unnötig verkompliziert.
+	Die Klasse \inlinelst{MainWindow}\footnote{S. \vref{lst:demoApplicationApplication}}
+	stellt im Kern auch nur einen \glslink{autorisierung}{autorisierten} Clienten bereit,
+	wie auch schon in \vref{lst:authorizedClientFixture} erklärt.
+	Wie und über welche Routen die Requests abgeschickt werden,
+	wird in \vref{lst:demoApplicationFetchData} dargestellt.
+	Diese sind allerdings fast die gleichen Methoden,
+	die auch in den \nameref{subsec:tests} genutzt werden.
